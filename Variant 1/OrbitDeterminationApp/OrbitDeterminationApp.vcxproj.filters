@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Header Files\FirstInputParameters">
+      <UniqueIdentifier>{b4c1292c-7f15-4b36-b3a2-8b058bf50da5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FirstInputParameters">
+      <UniqueIdentifier>{342150e6-b8c7-4b3f-ae5d-bdba1d1f02fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SecondInputParameters">
+      <UniqueIdentifier>{bb818fa0-e54a-4a83-b309-94460df300d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SecondInputParameters">
+      <UniqueIdentifier>{76cf6faf-6521-4c35-b10a-8e4301dd1669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GlobalButtons">
+      <UniqueIdentifier>{e152fb5c-4560-459c-8244-b665993b362f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GlobalButtons">
+      <UniqueIdentifier>{4bc58312-75a6-45c2-9827-0235e5f558c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResultParameters">
+      <UniqueIdentifier>{3fe943aa-88f3-4f87-8b31-f2e51a0c772c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ResultParameters">
+      <UniqueIdentifier>{1b556bd5-ba65-40ea-9da3-7f94e4d4027a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="OrbitDeterminationApp.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="OrbitDeterminationApp.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="OrbitDeterminationApp.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="OrbitDeterminationApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeasurementMethod.cpp">
+      <Filter>Source Files\FirstInputParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ObservationPoints.cpp">
+      <Filter>Source Files\FirstInputParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="AngularMeasurementsAndDate.cpp">
+      <Filter>Source Files\FirstInputParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="FileResults.cpp">
+      <Filter>Source Files\FirstInputParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ManuallyAngularMeasurementsAndDates.cpp">
+      <Filter>Source Files\SecondInputParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ManuallyObservationPoints.cpp">
+      <Filter>Source Files\SecondInputParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalButtons.cpp">
+      <Filter>Source Files\GlobalButtons</Filter>
+    </ClCompile>
+    <ClCompile Include="Components.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mediator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcreteMediator1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputVectorsAndOrbitalParameters.cpp">
+      <Filter>Source Files\ResultParameters</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mediator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteMediator1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OrbitDeterminationApp.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Fantastic-scenery-mountains-space-planet_1920x1080.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ObservationPoints.h">
+      <Filter>Header Files\FirstInputParameters</Filter>
+    </QtMoc>
+    <QtMoc Include="MeasurementMethod.h">
+      <Filter>Header Files\FirstInputParameters</Filter>
+    </QtMoc>
+    <QtMoc Include="AngularMeasurementsAndDate.h">
+      <Filter>Header Files\FirstInputParameters</Filter>
+    </QtMoc>
+    <QtMoc Include="FileResults.h">
+      <Filter>Header Files\FirstInputParameters</Filter>
+    </QtMoc>
+    <QtMoc Include="ManuallyAngularMeasurementsAndDates.h">
+      <Filter>Header Files\SecondInputParameters</Filter>
+    </QtMoc>
+    <QtMoc Include="GlobalButtons.h">
+      <Filter>Header Files\GlobalButtons</Filter>
+    </QtMoc>
+    <QtMoc Include="ManuallyObservationPoints.h">
+      <Filter>Header Files\SecondInputParameters</Filter>
+    </QtMoc>
+    <QtMoc Include="OutputVectorsAndOrbitalParameters.h">
+      <Filter>Header Files\ResultParameters</Filter>
+    </QtMoc>
+  </ItemGroup>
+</Project>
