@@ -64,7 +64,7 @@ void Methods::EscobalMethod::e_and_a()
 	if (!AreEqual(acos(m_cos_v_j_minus_v_k[0][0]), M_PI, 1e-6))
 		m_e_sin_v_2 = (-m_cos_v_j_minus_v_k[0][0] * m_e_cos_v_i[1] + m_e_cos_v_i[0]) / m_sin_v_j_minus_v_k[0][0];
 	else
-		m_e_sin_v_2 = (m_cos_v_j_minus_v_k[1][1] * m_e_cos_v_i[1] + m_e_cos_v_i[2]) / m_sin_v_j_minus_v_k[1][0];
+		m_e_sin_v_2 = (m_cos_v_j_minus_v_k[1][1] * m_e_cos_v_i[1] - m_e_cos_v_i[2]) / m_sin_v_j_minus_v_k[1][0];
 	m_e_square = m_e_cos_v_i[1] * m_e_cos_v_i[1] + m_e_sin_v_2 * m_e_sin_v_2;
 	m_a = m_p / (1 - m_e_square);
 };
@@ -105,14 +105,15 @@ void Methods::EscobalMethod::EllipticOrHyperbolicMotion(const std::size_t row)
 				(m_a * m_p);
 			m_F_j_minus_F_i = log(m_sh_F_i_minus_F_j + sqrt(m_sh_F_i_minus_F_j * m_sh_F_i_minus_F_j + 1)); // 7.309
 			M_j_minus_M_i = pow(-1, i) * m_F_j_minus_F_i + 2 * S_h * pow(sinh(m_F_j_minus_F_i / 2), 2) +
-				pow(-1, i + i) * C_h * m_sh_F_i_minus_F_j; // 7.310
+				pow(-1, i + 1) * C_h * m_sh_F_i_minus_F_j; // 7.310
 			m_F[row][i] = tau[i] - M_j_minus_M_i / n; // 7.311
 		}
 	}
 };
 void Methods::EscobalMethod::Loop()
 {
-	m_normOfr[0] = m_normOfr[1] = 1.1 * a_e;
+	m_normOfr[0] = 1.10 * a_e;
+	m_normOfr[1] = 1.11 * a_e;
 	std::array<FPT, 2> normOfr_previous{ 0.0 };
 	std::array<FPT, 2> delta_r{ 0.0 }, Delta_r{ 0.0 };
 	FPT Delta = 0.0, Delta_1 = 0.0, Delta_2 = 0.0;
@@ -124,13 +125,13 @@ void Methods::EscobalMethod::Loop()
 			{
 			case 1:
 				normOfr_previous[0] = m_normOfr[0];
-				delta_r[0] = normOfr_previous[0] * 0.005;
+				delta_r[0] = normOfr_previous[0] * 0.04;
 				m_normOfr[0] += delta_r[0];
 				break;
 			case 2:
 				normOfr_previous[1] = m_normOfr[1];
 				m_normOfr[0] = normOfr_previous[0];
-				delta_r[1] = normOfr_previous[1] * 0.005;
+				delta_r[1] = normOfr_previous[1] * 0.04;
 				m_normOfr[1] += delta_r[1];
 				break;
 			}
@@ -153,7 +154,7 @@ void Methods::EscobalMethod::Loop()
 		}
 		for (std::size_t i = 0; i < 2; i++)
 			for (std::size_t j = 0; j < 2; j++)
-				m_delta_F_divide_on_delta_r[i][j] = (m_F[i + 1][j] - m_F[i][j]) / delta_r[i]; // 7.312-7.315
+				m_delta_F_divide_on_delta_r[i][j] = (m_F[i + 1][j] - m_F[0][j]) / delta_r[i]; // 7.312-7.315
 		Delta = m_delta_F_divide_on_delta_r[0][0] * m_delta_F_divide_on_delta_r[1][1] -
 			m_delta_F_divide_on_delta_r[0][1] * m_delta_F_divide_on_delta_r[1][0]; // 7.316
 		Delta_1 = m_delta_F_divide_on_delta_r[1][1] * m_F[0][0] -

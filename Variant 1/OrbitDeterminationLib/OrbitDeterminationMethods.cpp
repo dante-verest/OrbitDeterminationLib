@@ -13,6 +13,10 @@ Methods::OrbitDeterminationMethods::OrbitDeterminationMethods(
 	this->m_t = t;
 	this->m_observationPoints = observationPoints;
 	this->m_orbitalParameters = Structures::OrbitalParameters<FPT>();
+
+	cw = _controlfp_s(nullptr, 0, 0);
+	cw &= ~(EM_OVERFLOW | EM_UNDERFLOW | EM_INEXACT | EM_ZERODIVIDE | EM_DENORMAL);
+	_controlfp_s(nullptr, cw, _MCW_EM);
 };
 // dtor
 Methods::OrbitDeterminationMethods::~OrbitDeterminationMethods()
@@ -35,8 +39,8 @@ void Methods::OrbitDeterminationMethods::tau1_and_tau3()
 {
 	for (std::size_t i = 0; i < 3; i++)
 		m_JulianDate[i] = Date::JulianDate(m_t[i]);
-	m_tau1 = ss_hh_dd * (m_JulianDate[0] - m_JulianDate[1]);
-	m_tau3 = ss_hh_dd * (m_JulianDate[2] - m_JulianDate[1]);
+	m_tau1 = k * from_day_to_minute * (m_JulianDate[0] - m_JulianDate[1]);
+	m_tau3 = k * from_day_to_minute * (m_JulianDate[2] - m_JulianDate[1]);
 };
 void Methods::OrbitDeterminationMethods::L()
 {
@@ -71,9 +75,9 @@ void Methods::OrbitDeterminationMethods::LocalSiderealTime_and_R()
 	FPT Theta_GST = 0.0;
 	for (std::size_t i = 0; i < 3; i++)
 	{
-		// Гринвичское звёздное время, в градусах, время - в минутах
+		// Гринвичское звёздное время, в градусах, время - в часах
 		Theta_GST = Theta_GST0 +
-			omega_Earth * (m_t[i].hour + m_t[i].min / 60.0 + m_t[i].sec / 3600.0);
+			omega_Earth * (m_JulianDate[i] - m_JulianDate[1]);
 		// само местное звёздное время, в градусах
 		m_Theta_LST[i] = Theta_GST + (m_observationPoints[i].lambda * 180 / M_PI);
 		// звёздное время в радианы
@@ -124,12 +128,19 @@ void Methods::OrbitDeterminationMethods::OrbitalParameters()
 
 void Methods::OrbitDeterminationMethods::TemplateMethod()
 {
-	tau1_and_tau3();
-	L();
-	G();
-	LocalSiderealTime_and_R();
-	MethodsCalculateLoop();
-	OrbitalParameters();
+	__try
+	{
+		tau1_and_tau3();
+		L();
+		G();
+		LocalSiderealTime_and_R();
+		MethodsCalculateLoop();
+		OrbitalParameters();
+	}
+	__except(EXCEPTION_EXECUTE_HANDLER)
+	{
+		//std::abort();
+	}
 };
 const Eigen::Vector3<Methods::OrbitDeterminationMethods::FPT>& 
 Methods::OrbitDeterminationMethods::get_r_2() const

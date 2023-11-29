@@ -23,15 +23,18 @@ namespace Methods
 		using IT = int;
 		//const FPT M_PI = 3.415926535897932384626433832795; // число Пифагора
 	protected:
+		// Windows-exceptions
+		IT cw;
 
 		// constants
-		const IT ss_hh_dd = 60 * 60 * 24;
-		//const FPT k = 0.01720209895;			// постоянная Гаусса
-		const FPT mu = 398600.4418;				// гравитационная постоянная Земли, в км/с
+		const IT from_day_to_minute = 60 * 24;	// дни в минуты
+		const FPT k = 0.07436574;				// постоянная Гаусса, в (э.р.)^(3/2)/мин
+		//const FPT mu = 398600.4418;				// гравитационная постоянная Земли, в км/с
+		const FPT mu = 5.9722e24;				// масса Земли, в кг
 		const FPT a_e = 6378.270;				// экваториальный радиус Земли (по Херрику, Бейкеру и Хилтону), в км
 		const FPT f = 1 / 298.3;				// коэффициент полярного сжатия Земли
 		const FPT omega_Earth = 
-			360.98564724; // угловая скорость Земли, в град/мин
+			360.98564724; // угловая скорость Земли, в град/день
 
 		// input data
 		std::array<AngularMeasurements<FPT>, 3> m_angularMeasurements;	// углы восхождения и склонения
