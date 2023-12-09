@@ -68,6 +68,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>D:\Visual Studio 2019 %28 C++ %29\Projects\4 cource\Course work\Variant 1\OrbitDeterminationLib;D:\Visual Studio 2019 %28 C++ %29\Projects\Libs\eigen-3.4.0;D:\Visual Studio 2019 %28 C++ %29\Projects\4 cource\Course work\Variant 1\OrbitStructuresStaticLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/Zm1000 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>OrbitDeterminationLib.lib;OrbitStructuresStaticLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -78,6 +79,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>D:\Visual Studio 2019 %28 C++ %29\Projects\4 cource\Course work\Variant 1\OrbitDeterminationLib;D:\Visual Studio 2019 %28 C++ %29\Projects\Libs\eigen-3.4.0;D:\Visual Studio 2019 %28 C++ %29\Projects\4 cource\Course work\Variant 1\OrbitStructuresStaticLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/Zm1000 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>OrbitDeterminationLib.lib;OrbitStructuresStaticLib.lib;%(AdditionalDependencies)</AdditionalDependencies>

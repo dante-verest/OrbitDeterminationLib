@@ -35,14 +35,20 @@ private:
 	Buttons::GlobalButtons* m_pGlobalButtons;
 
 	//using FPT = double;
-	typedef void (*MethodFunction)(
-		const std::array<AngularMeasurements<double>, 3>&,
-		const std::array<Date, 3>&,
-		const std::array<ObservationPoint<double>, 3>&,
-		Vector3<double>&,
-		Vector3<double>&,
-		OrbitalParameters<double>&);
-	MethodFunction m_funcMethodFunction = nullptr;
+
+	//typedef bool (*MethodFunction)(
+	//	const char*,
+	//	const std::array<AngularMeasurements<double>, 3>&,
+	//	const std::array<Date, 3>&,
+	//	const std::array<ObservationPoint<double>, 3>&,
+	//	Vector3<double>&,
+	//	Vector3<double>&,
+	//	OrbitalParameters<double>&,
+	//	std::chrono::microseconds*,
+	//	const bool);
+	//MethodFunction m_funcMethodFunction = nullptr;
+	const char* m_methodName;
+	bool m_bIsCalculatingSuccess;
 	std::array<AngularMeasurements<double>, 3> m_aAngularMeasurements;
 	std::array<Date, 3> m_aDates;
 	std::array<ObservationPoint<double>, 3> m_aPoints;
@@ -50,9 +56,11 @@ private:
 	Vector3<double> m_r_2;
 	Vector3<double> m_v_2;
 	OrbitalParameters<double> m_orbitalParameters;
+	std::chrono::microseconds m_calculateTime;
 
 	QString m_strTLEfilePath;
 	QString m_strOutputFilePath;
+	QMessageBox m_messageBox;
 public:
 	ConcreteMediator1(Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass);
 	~ConcreteMediator1();

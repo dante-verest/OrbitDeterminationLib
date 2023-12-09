@@ -42,13 +42,16 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 		switch (event)
 		{
 		case ChoosingGaussMethod:
-			m_funcMethodFunction = Gauss;
+			//m_funcMethodFunction = Gauss;
+			m_methodName = "Gauss";
 			break;
 		case ChoosingLaplasMethod:
-			m_funcMethodFunction = Laplas;
+			//m_funcMethodFunction = Laplas;
+			m_methodName = "Laplas";
 			break;
 		case ChoosingEscobalMethod:
-			m_funcMethodFunction = Escobal;
+			//m_funcMethodFunction = Escobal;
+			m_methodName = "Escobal";
 			break;
 		};
 	}
@@ -237,13 +240,16 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 				switch (index)
 				{
 				case ChoosingGaussMethod:
-					m_funcMethodFunction = Gauss;
+					//m_funcMethodFunction = Gauss;
+					m_methodName = "Gauss";
 					break;
 				case ChoosingLaplasMethod:
-					m_funcMethodFunction = Laplas;
+					//m_funcMethodFunction = Laplas;
+					m_methodName = "Laplas";
 					break;
 				case ChoosingEscobalMethod:
-					m_funcMethodFunction = Escobal;
+					//m_funcMethodFunction = Escobal;
+					m_methodName = "Escobal";
 					break;
 				};
 				m_aAngularMeasurements[0].alpha = m_pManuallyAngularMeasurementsAndDate->
@@ -282,8 +288,18 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 					GetObservationPointsField(*m_pOrbitDeterminationAppClass->HlineEdit_2);
 				m_aPoints[2].H = m_pManuallyObservationPoints->
 					GetObservationPointsField(*m_pOrbitDeterminationAppClass->HlineEdit_3);
-				m_funcMethodFunction(m_aAngularMeasurements, m_aDates, m_aPoints, m_r_2, m_v_2, m_orbitalParameters);
-				m_pOutputVectorsAndOrbitalParameters->SetResultsToLineEdits(m_r_2, m_v_2, m_orbitalParameters);
+				m_bIsCalculatingSuccess = Method(m_methodName, m_aAngularMeasurements, m_aDates, m_aPoints, m_r_2, m_v_2, 
+					m_orbitalParameters, &m_calculateTime, true);
+				if (m_bIsCalculatingSuccess)
+					m_pOutputVectorsAndOrbitalParameters->SetResultsToLineEdits(m_r_2, m_v_2, m_orbitalParameters);
+				else
+				{
+					m_messageBox.setText("The " + QString(m_methodName) + " method failed! There are maybe UNDERFLOW, \n"
+						"OVERFLOW or ZERODIVIDE exceptions!\nAlso maybe there are limit of iterations (100000)!\n"
+						"Try to enter other input numbers!");
+					m_messageBox.setIcon(QMessageBox::Critical);
+					m_messageBox.exec();
+				}
 			}
 			break;
 		case Clear:

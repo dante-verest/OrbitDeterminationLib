@@ -37,7 +37,8 @@ namespace Methods
         EscobalMethod(
             const std::array<AngularMeasurements<FPT>, 3>& angularMeasurements,
             const std::array<Date, 3>& t,
-            const std::array<ObservationPoint<FPT>, 3>& observationPoints);
+            const std::array<ObservationPoint<FPT>, 3>& observationPoints,
+            const bool isDebugFile = false);
     };
 }
 

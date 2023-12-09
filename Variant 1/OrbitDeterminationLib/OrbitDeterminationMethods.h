@@ -23,30 +23,35 @@ namespace Methods
 		using IT = int;
 		//const FPT M_PI = 3.415926535897932384626433832795; // число Пифагора
 	protected:
+		// debug-файл
+		//std::ofstream m_debugFile;
+
 		// Windows-exceptions
 		IT cw;
 
 		// constants
 		const IT from_day_to_minute = 60 * 24;	// дни в минуты
 		const FPT k = 0.07436574;				// постоянная Гаусса, в (э.р.)^(3/2)/мин
-		//const FPT mu = 398600.4418;				// гравитационная постоянная Земли, в км/с
-		const FPT mu = 5.9722e24;				// масса Земли, в кг
+		//const FPT mu = 398600.4418;				// гравитационная постоянная Земли, в км^3/с^2
+		const FPT mu = 1434961590.48;			// гравитационная постоянная Земли, в км^3/мин^2
+		//const FPT mu = 5.9722e24;				// масса Земли, в кг
 		const FPT a_e = 6378.270;				// экваториальный радиус Земли (по Херрику, Бейкеру и Хилтону), в км
 		const FPT f = 1 / 298.3;				// коэффициент полярного сжатия Земли
-		const FPT omega_Earth = 
-			360.98564724; // угловая скорость Земли, в град/день
+		const FPT omega_Earth = 360.98564724;	// угловая скорость Земли, в град/день
 
 		// input data
 		std::array<AngularMeasurements<FPT>, 3> m_angularMeasurements;	// углы восхождения и склонения
 		std::array<Date, 3> m_t;										// время наблюдения
-		std::array<ObservationPoint<FPT>, 3> m_observationPoints;
+		std::array<ObservationPoint<FPT>, 3> m_observationPoints;		// точки наблюдения
+		bool m_isDebugFile;												// разрешить запись вычислений в файл
 
 		// output data
-		Vector3<FPT> m_r_2_out, m_v_2_out;
-		OrbitalParameters<FPT> m_orbitalParameters;
+		Vector3<FPT> m_r_2_out, m_v_2_out;			// получаемые радиус-векторы расстояния и скорости
+		OrbitalParameters<FPT> m_orbitalParameters;	// параметры орбиты
+		std::chrono::microseconds m_calculateTime;	// время выполнения вычислений
 
 		// variables for calculations
-		std::array<FPT, 3> m_JulianDate{ 0.0 };
+		std::array<FPT, 3> m_JulianDate/*{ 0.0 }*/;
 		FPT m_tau1{ 0.0 }, m_tau3{ 0.0 };
 		std::array<std::array<FPT, 2>, 3> m_G{ 0.0 };
 		std::array<FPT, 3> m_Theta_LST{ 0.0 };
@@ -69,11 +74,13 @@ namespace Methods
 		OrbitDeterminationMethods(
 			const std::array<AngularMeasurements<FPT>, 3>& angularMeasurements,
 			const std::array<Date, 3>& t,
-			const std::array<ObservationPoint<FPT>, 3>& observationPoints);
+			const std::array<ObservationPoint<FPT>, 3>& observationPoints,
+			const bool isDebugFile = false);
 		virtual ~OrbitDeterminationMethods();
 		void TemplateMethod();
 		const Vector3<FPT>& get_r_2() const;
 		const Vector3<FPT>& get_v_2() const;
 		const Structures::OrbitalParameters<FPT>& getOrbitalParameters() const;
+		std::chrono::microseconds& getCalculateTime();
 	};
 }

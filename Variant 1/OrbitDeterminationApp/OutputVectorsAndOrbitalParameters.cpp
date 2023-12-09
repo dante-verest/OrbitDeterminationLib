@@ -81,11 +81,11 @@ void Results::OutputVectorsAndOrbitalParameters::SetResultsToLineEdits(
 {
 	m_pOrbitDeterminationAppClass->r_2LineEdit->setText(this->FullFormOfVector(r_2));
 	m_pOrbitDeterminationAppClass->v_2LineEdit->setText(this->FullFormOfVector(v_2));
-	m_pOrbitDeterminationAppClass->inclinationLineEdit->setText(QString::number(orbitalParameters.i));
-	m_pOrbitDeterminationAppClass->rightAscentionOfTheAscendingNodeLineEdit->setText(QString::number(orbitalParameters.Omega));
-	m_pOrbitDeterminationAppClass->argumentOfPerigeeLineEdit->setText(QString::number(orbitalParameters.omega));
-	m_pOrbitDeterminationAppClass->eccentricityLineEdit->setText(QString::number(orbitalParameters.e));
-	m_pOrbitDeterminationAppClass->largeSemiaxisLineEdit->setText(QString::number(orbitalParameters.a));
-	m_pOrbitDeterminationAppClass->trueAnomalyLineEdit->setText(QString::number(orbitalParameters.Theta));
-	m_pOrbitDeterminationAppClass->angularMomentumLineEdit->setText(QString::number(orbitalParameters.h));
+	m_pOrbitDeterminationAppClass->inclinationLineEdit->setText(QString::number(orbitalParameters.i.value()));
+	m_pOrbitDeterminationAppClass->rightAscentionOfTheAscendingNodeLineEdit->setText(QString::number(orbitalParameters.Omega.value()));
+	m_pOrbitDeterminationAppClass->argumentOfPerigeeLineEdit->setText(QString::number(orbitalParameters.omega.value()));
+	m_pOrbitDeterminationAppClass->eccentricityLineEdit->setText(QString::number(orbitalParameters.e.value()));
+	m_pOrbitDeterminationAppClass->largeSemiaxisLineEdit->setText(QString::number(orbitalParameters.a.value()));
+	m_pOrbitDeterminationAppClass->trueAnomalyLineEdit->setText(QString::number(orbitalParameters.Theta.value()));
+	m_pOrbitDeterminationAppClass->angularMomentumLineEdit->setText(QString::number(orbitalParameters.h.value()));
 };

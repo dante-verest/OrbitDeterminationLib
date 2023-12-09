@@ -4,8 +4,9 @@
 Methods::GaussMethod::GaussMethod(
 	const std::array<Structures::AngularMeasurements<Methods::OrbitDeterminationMethods::FPT>, 3>& angularMeasurements,
 	const std::array<Structures::Date, 3>& t,
-	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints) :
-	OrbitDeterminationMethods(angularMeasurements, t, observationPoints)
+	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints,
+	const bool isDebugFile) :
+	OrbitDeterminationMethods(angularMeasurements, t, observationPoints, isDebugFile)
 {};
 
 void Methods::GaussMethod::tau13()
@@ -25,19 +26,28 @@ void Methods::GaussMethod::L_minus_first_degree()
 {
 	m_L_minus_one_degree = m_L.reverse();
 };
-void Methods::GaussMethod::A_2_and_B_2_asterisks()
+void Methods::GaussMethod::A_and_B_asterisks()
 {
 	for (std::size_t row = 0; row < 3; row++)
 		for (std::size_t col = 0; col < 3; col++)
 		{
-			m_A_and_B_asterisks[row][0] -= (m_L_minus_one_degree(col, row) * m_R.col(col).dot(m_A_and_B[0]));
-			m_A_and_B_asterisks[row][1] -= (m_L_minus_one_degree(col, row) * m_R.col(col).dot(m_A_and_B[1]));
+			if (row != 1)
+			{
+				m_A_and_B_asterisks[row][0] += (m_L_minus_one_degree(col, row) * m_R.col(col).dot(m_A_and_B[0]));
+				m_A_and_B_asterisks[row][1] += (m_L_minus_one_degree(col, row) * m_R.col(col).dot(m_A_and_B[1]));
+			}
+			else
+			{
+				m_A_and_B_asterisks[row][0] -= (m_L_minus_one_degree(col, row) * m_R.col(col).dot(m_A_and_B[0]));
+				m_A_and_B_asterisks[row][1] -= (m_L_minus_one_degree(col, row) * m_R.col(col).dot(m_A_and_B[1]));
+			}
 		}
 };
 void Methods::GaussMethod::C_psi()
 {
 	// m_C_psi = 2 * m_L.col(1).dot(m_R.col(1));
-	m_C_psi = -2 * (m_R(1, 0) * m_L(1, 0) + m_R(1, 1) * m_L(1, 1) + m_R(1, 2) * m_L(1, 2));
+	//m_C_psi = -2 * (m_R(1, 0) * m_L(1, 0) + m_R(1, 1) * m_L(1, 1) + m_R(1, 2) * m_L(1, 2));
+	m_C_psi = -m_L.row(1).dot(m_R.row(1));
 };
 void Methods::GaussMethod::R_2_2()
 {
@@ -46,8 +56,9 @@ void Methods::GaussMethod::R_2_2()
 void Methods::GaussMethod::EighthDegreeEquation()
 {
 	FPT a = 0.0, b = 0.0, c = 0.0; // коэффициенты уравнения 8-ой степени
-	a = -m_A_and_B_asterisks[1][0] * (m_C_psi + m_A_and_B_asterisks[1][0] * m_R_2_2);
-	b = -mu * m_A_and_B_asterisks[1][1] * (m_C_psi + 2 * m_A_and_B_asterisks[1][0]);
+	//a = -m_A_and_B_asterisks[1][0] * (m_C_psi + m_A_and_B_asterisks[1][0] * m_R_2_2);
+	a = -m_A_and_B_asterisks[1][0] * (2 * m_C_psi + m_A_and_B_asterisks[1][0]) - m_R_2_2;
+	b = -2 * mu * m_A_and_B_asterisks[1][1] * (m_C_psi + m_A_and_B_asterisks[1][0]);
 	c = -pow(mu * m_A_and_B_asterisks[1][1], 2);
 	std::size_t i = 0;
 	FPT fLastResult = 0.0, fIterationResult = 0.0, fLocalDivide = 0.0;
@@ -57,9 +68,10 @@ void Methods::GaussMethod::EighthDegreeEquation()
 		x[i] = static_cast<IT>(1000 * (i + 1));
 	auto f = [&](const FPT a, const FPT b, const FPT c, const FPT x)
 	{
-		return (pow(x, 8) - a * pow(x, 6) - b * pow(x, 3) - c);
+		return (pow(x, 8) + a * pow(x, 6) + b * pow(x, 3) + c);
 	};
-	for (i = 0; i < nXSize; i++)
+	fLastResult = f(a, b, c, x[0]);
+	for (i = 1; i < nXSize; i++)
 	{
 		fIterationResult = f(a, b, c, x[i]);
 		if (fIterationResult < 0 && fLastResult >= 0 ||
@@ -72,7 +84,7 @@ void Methods::GaussMethod::EighthDegreeEquation()
 	}
 	do
 	{
-		fLocalDivide = f(a, b, c, m_r_2) / (8 * pow(m_r_2, 7) - 6 * a * pow(m_r_2, 5) - 3 * b * pow(m_r_2, 2));
+		fLocalDivide = f(a, b, c, m_r_2) / (8 * pow(m_r_2, 7) + 6 * a * pow(m_r_2, 5) + 3 * b * pow(m_r_2, 2));
 		m_r_2 -= fLocalDivide;
 	} while (fLocalDivide >= 1e-6);
 };
@@ -123,10 +135,10 @@ Methods::GaussMethod::FPT Methods::GaussMethod::g(const FPT V_2_norm, const FPT 
 };
 void Methods::GaussMethod::Loop()
 {
-	std::size_t i = 0;
-	while (true)
+	//while (true)
+	for(std::size_t iter = 0; iter < 100000; iter++)
 	{
-		for (i = 0; i < 3; i++)
+		for (std::size_t i = 0; i < 3; i++)
 			m_r.row(i) = m_rho[i] * m_L.row(i) - m_R.row(i);
 		HerrickGibbsFormulas();
 		m_f_1 = f(m_V_2, m_normOfr_2, m_normOfr_2_point, m_tau1);
@@ -152,14 +164,15 @@ void Methods::GaussMethod::Loop()
 void Methods::GaussMethod::r_2_and_v_2()
 {
 	m_r_2_out = m_rho_n - m_R.row(1).transpose();
-	m_v_2_out = (- m_d[0] * m_r.row(0) + m_d[1] * m_r.row(1) + m_d[2] * m_r.row(2)).transpose();
+	// из км/мин в км/с
+	m_v_2_out = (- m_d[0] * m_r.row(0) + m_d[1] * m_r.row(1) + m_d[2] * m_r.row(2)).transpose() / 60;
 };
 void Methods::GaussMethod::MethodsCalculateLoop()
 {
 	tau13();
 	A_and_B();
 	L_minus_first_degree();
-	A_2_and_B_2_asterisks();
+	A_and_B_asterisks();
 	C_psi();
 	R_2_2();
 	EighthDegreeEquation();

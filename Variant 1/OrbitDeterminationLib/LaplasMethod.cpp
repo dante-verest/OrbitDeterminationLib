@@ -4,8 +4,9 @@
 Methods::LaplasMethod::LaplasMethod(
 	const std::array<Structures::AngularMeasurements<Methods::OrbitDeterminationMethods::FPT>, 3>& angularMeasurements,
 	const std::array<Structures::Date, 3>& t,
-	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints) :
-	OrbitDeterminationMethods(angularMeasurements, t, observationPoints)
+	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints,
+	const bool isDebugFile) :
+	OrbitDeterminationMethods(angularMeasurements, t, observationPoints, isDebugFile)
 {};
 
 void Methods::LaplasMethod::s()
@@ -35,9 +36,10 @@ void Methods::LaplasMethod::R_2_point_and_R_2_two_point()
 	else
 	{
 		m_R_2_point_and_R_2_two_point[0] = Vector3<FPT>(-m_R(1, 1), m_R(1, 0), 0) * 
-			omega_Earth * M_PI / (180 * 60);
+			omega_Earth * M_PI / (180 * /*k * */from_day_to_minute);
 		m_R_2_point_and_R_2_two_point[1] = Vector3<FPT>(-m_R(1, 0), -m_R(1, 1), 0) *
-			omega_Earth * omega_Earth * M_PI * M_PI / (180 * 180 * 60 * 60);
+			omega_Earth * omega_Earth * 
+			M_PI * M_PI / (180 * 180 * /*k * k * */from_day_to_minute * from_day_to_minute);
 	}
 };
 void Methods::LaplasMethod::Determinations()
@@ -71,26 +73,29 @@ void Methods::LaplasMethod::R_2_2()
 };
 void Methods::LaplasMethod::C_psi()
 {
-	m_C_psi = 2 * m_L.row(1).dot(m_R.row(1));
+	m_C_psi = -m_L.row(1).dot(m_R.row(1));
 };
 void Methods::LaplasMethod::EighthDegreeEquation()
 {
 	FPT a = 0.0, b = 0.0, c = 0.0; // коэффициенты уравнения 8-ой степени
-	a = -m_A_2_and_B_2_and_C_2_and_D_2_asterisks[0] * (m_C_psi + 
-		m_A_2_and_B_2_and_C_2_and_D_2_asterisks[0] *  m_R_2_2);
-	b = -mu * m_A_2_and_B_2_and_C_2_and_D_2_asterisks[1] * (m_C_psi + 2 * m_A_2_and_B_2_and_C_2_and_D_2_asterisks[0]);
+	//a = -m_A_2_and_B_2_and_C_2_and_D_2_asterisks[0] * (m_C_psi + 
+	//	m_A_2_and_B_2_and_C_2_and_D_2_asterisks[0] *  m_R_2_2);
+	a = -m_A_2_and_B_2_and_C_2_and_D_2_asterisks[0] * (2 * m_C_psi +
+		m_A_2_and_B_2_and_C_2_and_D_2_asterisks[0]) - m_R_2_2;
+	b = -2 * mu * m_A_2_and_B_2_and_C_2_and_D_2_asterisks[1] * (m_C_psi + m_A_2_and_B_2_and_C_2_and_D_2_asterisks[0]);
 	c = -pow(mu * m_A_2_and_B_2_and_C_2_and_D_2_asterisks[1], 2);
 	std::size_t i = 0;
 	FPT fLastResult = 0.0, fIterationResult = 0.0, fLocalDivide = 0.0;
-	const IT nXSize = 100;
+	const IT nXSize = 100000;
 	IT x[nXSize]{ 0 };
 	for (i = 0; i < nXSize; i++)
 		x[i] = static_cast<IT>(1000 * (i + 1));
-	auto f = [&](const FPT a, const FPT b, const FPT c, const FPT x)
+	auto f = [](const FPT a, const FPT b, const FPT c, const FPT x)
 	{
-		return (pow(x, 8) - a * pow(x, 6) - b * pow(x, 3) - c);
+		return (pow(x, 8) + a * pow(x, 6) + b * pow(x, 3) + c);
 	};
-	for (i = 0; i < nXSize; i++)
+	fLastResult = f(a, b, c, x[0]);
+	for (i = 1; i < nXSize; i++)
 	{
 		fIterationResult = f(a, b, c, x[i]);
 		if (fIterationResult < 0 && fLastResult >= 0 ||
@@ -103,7 +108,7 @@ void Methods::LaplasMethod::EighthDegreeEquation()
 	}
 	do
 	{
-		fLocalDivide = f(a, b, c, m_r_2) / (8 * pow(m_r_2, 7) - 6 * a * pow(m_r_2, 5) - 3 * b * pow(m_r_2, 2));
+		fLocalDivide = f(a, b, c, m_r_2) / (8 * pow(m_r_2, 7) + 6 * a * pow(m_r_2, 5) + 3 * b * pow(m_r_2, 2));
 		m_r_2 -= fLocalDivide;
 	} while (fLocalDivide >= 1e-6);
 };
@@ -116,10 +121,11 @@ void Methods::LaplasMethod::rho_2_and_rho_2_point()
 };
 void Methods::LaplasMethod::r_2_and_v_2()
 {
-	m_r_2_out = m_rho_2_and_rho_2_point[0] * (m_L.row(1) - m_R.row(1)).transpose();
-	m_v_2_out = m_rho_2_and_rho_2_point[1] * m_L.row(1).transpose() +
-		m_rho_2_and_rho_2_point[1] * m_L_2_point_and_L_2_two_point[0] -
-		m_R_2_point_and_R_2_two_point[0];
+	m_r_2_out = m_rho_2_and_rho_2_point[0] * m_L.row(1) - m_R.row(1);
+	// из км/мин в км/с
+	m_v_2_out = (m_rho_2_and_rho_2_point[1] * m_L.row(1).transpose() +
+		m_rho_2_and_rho_2_point[0] * m_L_2_point_and_L_2_two_point[0] -
+		m_R_2_point_and_R_2_two_point[0]) / 60;
 };
 void Methods::LaplasMethod::MethodsCalculateLoop()
 {

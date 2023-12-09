@@ -10,3 +10,5 @@
 #include <QLocale>
 #include <QDoubleValidator>
 #include <QSettings>
+#include <chrono>
+#include <QMessageBox>

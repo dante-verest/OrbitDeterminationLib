@@ -4,8 +4,9 @@
 Methods::EscobalMethod::EscobalMethod(
 	const std::array<Structures::AngularMeasurements<Methods::OrbitDeterminationMethods::FPT>, 3>& angularMeasurements,
 	const std::array<Structures::Date, 3>& t,
-	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints) :
-	OrbitDeterminationMethods(angularMeasurements, t, observationPoints)
+	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints,
+	const bool isDebugFile) :
+	OrbitDeterminationMethods(angularMeasurements, t, observationPoints, isDebugFile)
 {};
 
 void Methods::EscobalMethod::C_psi()
@@ -28,7 +29,7 @@ void Methods::EscobalMethod::cos_v_and_sin_v()
 {
 	FPT x_k_y_j_minus_x_j_y_k = 0.0;
 	for (std::size_t j = 1; j < 3; j++)
-		for (std::size_t k = 0; k < 2; k++)
+		for (std::size_t k = 0; k < j; k++)
 		{
 			m_cos_v_j_minus_v_k[j - 1][k] = m_r.row(j).dot(m_r.row(k)) /
 				(m_normOfr[j] * m_normOfr[k]);
@@ -112,12 +113,12 @@ void Methods::EscobalMethod::EllipticOrHyperbolicMotion(const std::size_t row)
 };
 void Methods::EscobalMethod::Loop()
 {
-	m_normOfr[0] = 1.10 * a_e;
-	m_normOfr[1] = 1.11 * a_e;
+	m_normOfr[0] = 1.00 * a_e;
+	m_normOfr[1] = 1.10 * a_e;
 	std::array<FPT, 2> normOfr_previous{ 0.0 };
 	std::array<FPT, 2> delta_r{ 0.0 }, Delta_r{ 0.0 };
 	FPT Delta = 0.0, Delta_1 = 0.0, Delta_2 = 0.0;
-	while (true)
+	for (std::size_t iter = 0; iter < 100000; iter++)
 	{
 		for (std::size_t j = 0; j < 3; j++)
 		{
@@ -182,14 +183,16 @@ void Methods::EscobalMethod::r_2_and_v_2()
 		m_r_2_out = m_r.row(1).transpose();
 		f = 1 - m_a * (1 - m_cos_E_i_minus_E_j) / m_normOfr[1];
 		g = m_tau3 - sqrt(pow(m_a, 3) / mu) * (m_E_j_minus_E_i - m_sin_E_i_minus_E_j);
-		m_v_2_out = (m_r.row(2).transpose() - f * m_r_2_out) / g;
+		// èç êì/ìèí â êì/ñ
+		m_v_2_out = (m_r.row(2).transpose() - f * m_r_2_out) / (g * 60);
 	}
 	else
 	{
 		m_r_2_out = m_r.row(1).transpose();
 		f = 1 - m_a * (1 - m_ch_F_i_minus_F_j) / m_normOfr[1];
 		g = m_tau3 - sqrt(pow(m_a, 3) / mu) * (m_F_j_minus_F_i - m_sh_F_i_minus_F_j);
-		m_v_2_out = (m_r.row(2).transpose() - f * m_r_2_out) / g;
+		// èç êì/ìèí â êì/ñ
+		m_v_2_out = (m_r.row(2).transpose() - f * m_r_2_out) / (g * 60);
 	}
 };
 void Methods::EscobalMethod::MethodsCalculateLoop()

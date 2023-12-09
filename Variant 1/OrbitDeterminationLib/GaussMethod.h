@@ -27,7 +27,8 @@ namespace Methods
         FPT m_a = 0.0;
         FPT m_f_1 = 0.0, m_f_3 = 0.0, m_g_1 = 0.0, m_g_3 = 0.0;
         FPT m_D_asterisk = 0.0;
-        std::array<FPT, 3> m_c{ 0.0 };
+        //std::array<FPT, 3> m_c{ 0.0 };
+        Vector3<FPT> m_c;
         Vector3<FPT> m_G;
         Vector3<FPT> m_rho_n;
 
@@ -35,7 +36,7 @@ namespace Methods
         void tau13(); // 7.106
         void A_and_B(); // 7.107-7.110
         void L_minus_first_degree();  // 7.118-7.119
-        void A_2_and_B_2_asterisks(); // 7.125
+        void A_and_B_asterisks(); // 7.125
         void C_psi(); // 7.126
         void R_2_2(); // 7.127
         void EighthDegreeEquation();  // 7.131
@@ -50,7 +51,8 @@ namespace Methods
     public:
         GaussMethod(const std::array<AngularMeasurements<FPT>, 3>& angularMeasurements,
             const std::array<Date, 3>& t,
-            const std::array<ObservationPoint<FPT>, 3>& observationPoints);
+            const std::array<ObservationPoint<FPT>, 3>& observationPoints,
+            const bool isDebugFile = false);
     };
 }
 
