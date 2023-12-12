@@ -103,6 +103,19 @@ void FirstInputParameters::ObservationPoints::SetReadOnlyAllColumns(bool a_bOn)
 	m_pOrbitDeterminationAppClass->HlineEdit_3->setReadOnly(a_bOn);
 };
 
+void FirstInputParameters::ObservationPoints::SetEnabledColumns(bool bOn)
+{
+	m_pOrbitDeterminationAppClass->columnsLabel->setEnabled(bOn);
+	m_pOrbitDeterminationAppClass->firstColumnCheckBox->setEnabled(bOn);
+	m_pOrbitDeterminationAppClass->secondColumnCheckBox->setEnabled(bOn);
+	m_pOrbitDeterminationAppClass->thirdColumnCheckBox->setEnabled(bOn);
+};
+
+void FirstInputParameters::ObservationPoints::ClearAll()
+{
+
+};
+
 void FirstInputParameters::ObservationPoints::IsConstObservationPoints(bool a_bChecked)
 {
 	m_pOrbitDeterminationAppClass->observationPointComboBox->setEnabled(a_bChecked);

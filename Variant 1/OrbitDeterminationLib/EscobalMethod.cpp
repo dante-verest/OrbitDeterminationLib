@@ -113,8 +113,8 @@ void Methods::EscobalMethod::EllipticOrHyperbolicMotion(const std::size_t row)
 };
 void Methods::EscobalMethod::Loop()
 {
-	m_normOfr[0] = 1.00 * a_e;
-	m_normOfr[1] = 1.10 * a_e;
+	m_normOfr[0] = 2.00 * a_e;
+	m_normOfr[1] = 2.10 * a_e;
 	std::array<FPT, 2> normOfr_previous{ 0.0 };
 	std::array<FPT, 2> delta_r{ 0.0 }, Delta_r{ 0.0 };
 	FPT Delta = 0.0, Delta_1 = 0.0, Delta_2 = 0.0;

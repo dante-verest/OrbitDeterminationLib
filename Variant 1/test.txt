@@ -1,0 +1,1281 @@
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Gauss
+Radius-vectors:
+	r_2:	+5135.14i-114.53j+3798.42k
+	v_2:	+21.1516i+5.62975j+5.48241k
+Orbital parameters:
+	inclination = 1.06553 rad
+	right ascention of the ascending node = 0.399132 rad
+	argument of perigee = 3.88775 rad
+	eccentricity = 0.999543
+	large semi-axis = 3197.79 km
+	true anomaly = 3.14068 rad
+	angular momentum = 64730.2 km^2/s
+
+Method: Gauss
+Radius-vectors:
+	r_2:	+5135.14i-114.53j+3798.42k
+	v_2:	+21.1516i+5.62975j+5.48241k
+Orbital parameters:
+	inclination = 1.06553 rad
+	right ascention of the ascending node = 0.399132 rad
+	argument of perigee = 3.88775 rad
+	eccentricity = 0.999543
+	large semi-axis = 3197.79 km
+	true anomaly = 3.14068 rad
+	angular momentum = 64730.2 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+8757.59i+1021.1j+4691.69k
+	v_2:	+12.353i+4.27324j+2.80297k
+Orbital parameters:
+	inclination = 0.98718 rad
+	right ascention of the ascending node = 0.475125 rad
+	argument of perigee = 3.73913 rad
+	eccentricity = 0.999859
+	large semi-axis = 4996.85 km
+	true anomaly = 3.1412 rad
+	angular momentum = 45022.9 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Gauss
+Radius-vectors:
+	r_2:	+5135.14i-114.53j+3798.42k
+	v_2:	+21.1516i+5.62975j+5.48241k
+Orbital parameters:
+	inclination = 1.06553 rad
+	right ascention of the ascending node = 0.399132 rad
+	argument of perigee = 3.88775 rad
+	eccentricity = 0.999543
+	large semi-axis = 3197.79 km
+	true anomaly = 3.14068 rad
+	angular momentum = 64730.2 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+6560.64i+332.79j+4148.07k
+	v_2:	+9.75685i+3.7004j+2.38571k
+Orbital parameters:
+	inclination = 0.939644 rad
+	right ascention of the ascending node = 0.530387 rad
+	argument of perigee = 3.86393 rad
+	eccentricity = 0.999886
+	large semi-axis = 3885.76 km
+	true anomaly = 3.14135 rad
+	angular momentum = 35639.5 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+5838.73i+4303.28j+2738.94k
+	v_2:	-6.92321i-39.8301j+9.78873k
+Orbital parameters:
+	inclination = 2.44592 rad
+	right ascention of the ascending node = 4.24606 rad
+	argument of perigee = 5.7038 rad
+	eccentricity = 0.993738
+	large semi-axis = 3894.76 km
+	true anomaly = 3.14601 rad
+	angular momentum = 264147 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+5838.73i+4303.28j+2738.94k
+	v_2:	-6.92321i-39.8301j+9.78873k
+Orbital parameters:
+	inclination = 2.44592 rad
+	right ascention of the ascending node = 4.24606 rad
+	argument of perigee = 5.7038 rad
+	eccentricity = 0.993738
+	large semi-axis = 3894.76 km
+	true anomaly = 3.14601 rad
+	angular momentum = 264147 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+5838.73i+4303.28j+2738.94k
+	v_2:	-6.92321i-39.8301j+9.78873k
+Orbital parameters:
+	inclination = 2.44592 rad
+	right ascention of the ascending node = 4.24606 rad
+	argument of perigee = 5.7038 rad
+	eccentricity = 0.993738
+	large semi-axis = 3894.76 km
+	true anomaly = 3.14601 rad
+	angular momentum = 264147 km^2/s
+
+Method: Gauss
+Radius-vectors:
+	r_2:	+5134.64i-113.59j+3795.07k
+	v_2:	+42.6092i+275.871j-65.9185k
+Orbital parameters:
+	inclination = 0.681766 rad
+	right ascention of the ascending node = 1.12231 rad
+	argument of perigee = 4.39307 rad
+	eccentricity = 0.634451
+	large semi-axis = 3908.39 km
+	true anomaly = 3.16134 rad
+	angular momentum = 1.83054e+06 km^2/s
+
+Method: Gauss
+Radius-vectors:
+	r_2:	+5134.64i-113.59j+3795.07k
+	v_2:	+42.6092i+275.871j-65.9185k
+Orbital parameters:
+	inclination = 0.681766 rad
+	right ascention of the ascending node = 1.12231 rad
+	argument of perigee = 4.39307 rad
+	eccentricity = 0.634451
+	large semi-axis = 3908.39 km
+	true anomaly = 3.16134 rad
+	angular momentum = 1.83054e+06 km^2/s
+
+Method: Gauss
+Radius-vectors:
+	r_2:	+5134.64i-113.59j+3795.07k
+	v_2:	+42.6092i+275.871j-65.9185k
+Orbital parameters:
+	inclination = 0.681766 rad
+	right ascention of the ascending node = 1.12231 rad
+	argument of perigee = 4.39307 rad
+	eccentricity = 0.634451
+	large semi-axis = 3908.39 km
+	true anomaly = 3.16134 rad
+	angular momentum = 1.83054e+06 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Escobal
+Radius-vectors:
+	r_2:	+4494.74i-4126.27j+4754.52k
+	v_2:	+9.51624i-2.76184j+0.455025k
+Orbital parameters:
+	inclination = 1.02926 rad
+	right ascention of the ascending node = 6.02835 rad
+	argument of perigee = 3.94123 rad
+	eccentricity = 0.999756
+	large semi-axis = 3868.65 km
+	true anomaly = 3.14133 rad
+	angular momentum = 52095.6 km^2/s
+
+Method: Laplas
+Radius-vectors:
+	r_2:	+5838.73i+4303.28j+2738.94k
+	v_2:	-6.92321i-39.8301j+9.78873k
+Orbital parameters:
+	inclination = 2.44592 rad
+	right ascention of the ascending node = 4.24606 rad
+	argument of perigee = 5.7038 rad
+	eccentricity = 0.993738
+	large semi-axis = 3894.76 km
+	true anomaly = 3.14601 rad
+	angular momentum = 264147 km^2/s
+

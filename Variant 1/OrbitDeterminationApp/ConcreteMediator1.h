@@ -10,15 +10,8 @@
 #include "ManuallyObservationPoints.h"
 #include "OutputVectorsAndOrbitalParameters.h"
 
-#include "AngularMeasurements.h"
-#include "Date.h"
-#include "ObservationPoint.h"
-#include "OrbitalParameters.h"
-#include "MethodFunctions.h"
-
 using namespace Eigen;
 using namespace Structures;
-using namespace Methods;
 
 
 class ConcreteMediator1 : public Mediator
@@ -36,18 +29,7 @@ private:
 
 	//using FPT = double;
 
-	//typedef bool (*MethodFunction)(
-	//	const char*,
-	//	const std::array<AngularMeasurements<double>, 3>&,
-	//	const std::array<Date, 3>&,
-	//	const std::array<ObservationPoint<double>, 3>&,
-	//	Vector3<double>&,
-	//	Vector3<double>&,
-	//	OrbitalParameters<double>&,
-	//	std::chrono::microseconds*,
-	//	const bool);
-	//MethodFunction m_funcMethodFunction = nullptr;
-	const char* m_methodName;
+	std::string m_methodName;
 	bool m_bIsCalculatingSuccess;
 	std::array<AngularMeasurements<double>, 3> m_aAngularMeasurements;
 	std::array<Date, 3> m_aDates;
@@ -58,9 +40,11 @@ private:
 	OrbitalParameters<double> m_orbitalParameters;
 	std::chrono::microseconds m_calculateTime;
 
-	QString m_strTLEfilePath;
-	QString m_strOutputFilePath;
-	QMessageBox m_messageBox;
+	bool m_bIsConstObservationPoint;
+	bool m_bIsOwnObservationPoint;
+	//QString m_strTLEfilePath;
+	//QString m_strOutputFilePath;
+	//QMessageBox m_messageBox;
 public:
 	ConcreteMediator1(Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass);
 	~ConcreteMediator1();

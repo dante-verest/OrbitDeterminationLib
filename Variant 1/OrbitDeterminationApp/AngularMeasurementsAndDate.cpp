@@ -58,19 +58,10 @@ void FirstInputParameters::AngularMeasurementsAndDate::WriteSettings()
 	m_componentsSettings.endGroup();
 };
 
-void FirstInputParameters::AngularMeasurementsAndDate::SetReadOnlyAllMeasurements(bool a_bOn)
+void FirstInputParameters::AngularMeasurementsAndDate::ClearAll()
 {
-	m_pOrbitDeterminationAppClass->alphaLineEdit_1->setReadOnly(a_bOn);
-	m_pOrbitDeterminationAppClass->deltaLineEdit_1->setReadOnly(a_bOn);
-	m_pOrbitDeterminationAppClass->dateTimeEdit_1->setReadOnly(a_bOn);
-
-	m_pOrbitDeterminationAppClass->alphaLineEdit_2->setReadOnly(a_bOn);
-	m_pOrbitDeterminationAppClass->deltaLineEdit_2->setReadOnly(a_bOn);
-	m_pOrbitDeterminationAppClass->dateTimeEdit_2->setReadOnly(a_bOn);
-
-	m_pOrbitDeterminationAppClass->alphaLineEdit_3->setReadOnly(a_bOn);
-	m_pOrbitDeterminationAppClass->deltaLineEdit_3->setReadOnly(a_bOn);
-	m_pOrbitDeterminationAppClass->dateTimeEdit_3->setReadOnly(a_bOn);
+	m_pOrbitDeterminationAppClass->TLEfileLineEdit->clear();
+	m_pOrbitDeterminationAppClass->TLEfileLineEdit->setEnabled(false);
 };
 
 void FirstInputParameters::AngularMeasurementsAndDate::Manually(bool a_bChecked)
@@ -96,5 +87,9 @@ void FirstInputParameters::AngularMeasurementsAndDate::FromTLEfile(bool a_bCheck
 
 void FirstInputParameters::AngularMeasurementsAndDate::AddFilePath()
 {
-	this->m_pMediator->Notify(this, Commands::AddingTLEfilePath);
-}
+	//this->m_pMediator->Notify(this, Commands::AddingTLEfilePath);
+	m_strTLEfilePath = QFileDialog::getOpenFileName(m_pOrbitDeterminationAppClass->centralWidget,
+		tr("Open file"), tr("./"), tr("TLE (*.txt *.tle)"));
+	m_pOrbitDeterminationAppClass->TLEfileLineEdit->setText(m_strTLEfilePath);
+
+};

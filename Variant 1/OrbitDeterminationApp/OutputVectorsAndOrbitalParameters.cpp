@@ -5,6 +5,7 @@ Results::OutputVectorsAndOrbitalParameters::OutputVectorsAndOrbitalParameters(
 	Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass, Mediator* aMediator) :
 	Components(aOrbitDeterminationAppClass, aMediator)
 {
+	m_pOrbitDeterminationAppClass->methodNameLineEdit->setReadOnly(true);
 	m_pOrbitDeterminationAppClass->r_2LineEdit->setReadOnly(true);
 	m_pOrbitDeterminationAppClass->v_2LineEdit->setReadOnly(true);
 	m_pOrbitDeterminationAppClass->inclinationLineEdit->setReadOnly(true);
@@ -27,6 +28,8 @@ void Results::OutputVectorsAndOrbitalParameters::ReadSettings()
 {
 	m_componentsSettings.beginGroup("/Settings for result output vectors and orbital parameters");
 
+	m_pOrbitDeterminationAppClass->methodNameLineEdit->setText(m_componentsSettings.value("/method name", "").toString());
+
 	m_pOrbitDeterminationAppClass->r_2LineEdit->setText(m_componentsSettings.value("/r_2", "").toString());
 	m_pOrbitDeterminationAppClass->v_2LineEdit->setText(m_componentsSettings.value("/v_2", "").toString());
 
@@ -44,6 +47,8 @@ void Results::OutputVectorsAndOrbitalParameters::ReadSettings()
 void Results::OutputVectorsAndOrbitalParameters::WriteSettings()
 {
 	m_componentsSettings.beginGroup("/Settings for result output vectors and orbital parameters");
+
+	m_componentsSettings.setValue("/method name", m_pOrbitDeterminationAppClass->methodNameLineEdit->text());
 
 	m_componentsSettings.setValue("/r_2", m_pOrbitDeterminationAppClass->r_2LineEdit->text());
 	m_componentsSettings.setValue("/v_2", m_pOrbitDeterminationAppClass->v_2LineEdit->text());
@@ -75,10 +80,12 @@ QString Results::OutputVectorsAndOrbitalParameters::FullFormOfVector(const Eigen
 };
 
 void Results::OutputVectorsAndOrbitalParameters::SetResultsToLineEdits(
+	const char* methodName,
 	const Eigen::Vector3<double>& r_2,
 	const Eigen::Vector3<double>& v_2,
 	const Structures::OrbitalParameters<double>& orbitalParameters)
 {
+	m_pOrbitDeterminationAppClass->methodNameLineEdit->setText(methodName);
 	m_pOrbitDeterminationAppClass->r_2LineEdit->setText(this->FullFormOfVector(r_2));
 	m_pOrbitDeterminationAppClass->v_2LineEdit->setText(this->FullFormOfVector(v_2));
 	m_pOrbitDeterminationAppClass->inclinationLineEdit->setText(QString::number(orbitalParameters.i.value()));
@@ -88,4 +95,17 @@ void Results::OutputVectorsAndOrbitalParameters::SetResultsToLineEdits(
 	m_pOrbitDeterminationAppClass->largeSemiaxisLineEdit->setText(QString::number(orbitalParameters.a.value()));
 	m_pOrbitDeterminationAppClass->trueAnomalyLineEdit->setText(QString::number(orbitalParameters.Theta.value()));
 	m_pOrbitDeterminationAppClass->angularMomentumLineEdit->setText(QString::number(orbitalParameters.h.value()));
+};
+
+void Results::OutputVectorsAndOrbitalParameters::ClearAll()
+{
+	m_pOrbitDeterminationAppClass->r_2LineEdit->clear();
+	m_pOrbitDeterminationAppClass->v_2LineEdit->clear();
+	m_pOrbitDeterminationAppClass->inclinationLineEdit->clear();
+	m_pOrbitDeterminationAppClass->rightAscentionOfTheAscendingNodeLineEdit->clear();
+	m_pOrbitDeterminationAppClass->argumentOfPerigeeLineEdit->clear();
+	m_pOrbitDeterminationAppClass->eccentricityLineEdit->clear();
+	m_pOrbitDeterminationAppClass->largeSemiaxisLineEdit->clear();
+	m_pOrbitDeterminationAppClass->trueAnomalyLineEdit->clear();
+	m_pOrbitDeterminationAppClass->angularMomentumLineEdit->clear();
 };

@@ -15,9 +15,11 @@ namespace Results
 		~OutputVectorsAndOrbitalParameters();
 		QString FullFormOfVector(const Eigen::Vector3<double>& vector);
 		void SetResultsToLineEdits(
+			const char* methodName,
 			const Eigen::Vector3<double>& r_2,
 			const Eigen::Vector3<double>& v_2,
 			const Structures::OrbitalParameters<double>& orbitalParameters);
+		void ClearAll();
 	private:
 		void ReadSettings();
 		void WriteSettings();

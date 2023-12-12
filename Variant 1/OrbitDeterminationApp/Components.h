@@ -3,6 +3,15 @@
 #include "ui_OrbitDeterminationApp.h"
 #include "Mediator.h"
 
+#include "AngularMeasurements.h"
+#include "Date.h"
+#include "ObservationPoint.h"
+#include "OrbitalParameters.h"
+#include "MethodFunctions.h"
+
+using namespace Methods;
+
+
 enum Commands
 {
 	// MeasurementMethod class
@@ -38,6 +47,7 @@ enum Commands
 	EnteringDate3,
 	// ManuallyObservationPoints class
 	ChoosingOneObservationPoint,
+	ChoosingManyObservationPoints,
 	EnteringPhi1,
 	EnteringLambda1,
 	EnteringH1,
@@ -52,7 +62,7 @@ enum Commands
 	Clear
 };
 
-class Components : public QObject
+class Components : public QSpinBox
 {
 protected:
 	Ui::OrbitDeterminationAppClass* m_pOrbitDeterminationAppClass;

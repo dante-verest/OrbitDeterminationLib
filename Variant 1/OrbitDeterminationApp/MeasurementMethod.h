@@ -12,6 +12,7 @@ namespace FirstInputParameters
 			Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass,
 			Mediator* aMediator);
 		~MeasurementMethod();
+		QString GetCurrentItem();
 	private:
 		void ReadSettings();
 		void WriteSettings();

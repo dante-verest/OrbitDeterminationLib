@@ -12,3 +12,6 @@
 #include <QSettings>
 #include <chrono>
 #include <QMessageBox>
+#include <QRegExp>
+#include <algorithm>
+#include <QFile>

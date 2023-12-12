@@ -4,6 +4,13 @@
 
 namespace Structures
 {
+	template<typename T>
+	bool AreEqual(const T comparable, const T comparative, const T epsilon)
+	{
+		return (std::fabs(comparable - comparative) <=
+			epsilon * std::fmax(std::fabs(comparable), std::fabs(comparative)));
+	};
+
 	//template<typename T>
 	//concept FPT = std::is_floating_point<T>::value;
 	//template<FPT T>
@@ -31,12 +38,6 @@ namespace Structures
 			//	AreEqual(e, 0.0, 1e-6) && AreEqual(a, 0.0, 1e-6) && AreEqual(Theta, 0.0, 1e-6) && AreEqual(h, 0.0, 1e-6));
 			return !(i.has_value() && Omega.has_value() && omega.has_value() && 
 				e.has_value() && a.has_value() && Theta.has_value() && h.has_value());
-		};
-	private:
-		bool AreEqual(const T comparable, const T comparative, const T epsilon)
-		{
-			return (std::fabs(comparable - comparative) <=
-				epsilon * std::fmax(std::fabs(comparable), std::fabs(comparative)));
 		};
 	};
 }

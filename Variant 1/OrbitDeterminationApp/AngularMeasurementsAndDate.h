@@ -7,12 +7,14 @@ namespace FirstInputParameters
 	class AngularMeasurementsAndDate : public Components
 	{
 		Q_OBJECT
+	private:
+		QString m_strTLEfilePath;
 	public:
 		AngularMeasurementsAndDate(
 			Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass,
 			Mediator* aMediator);
 		~AngularMeasurementsAndDate();
-		void SetReadOnlyAllMeasurements(bool a_bOn);
+		void ClearAll();
 	private:
 		void ReadSettings();
 		void WriteSettings();

@@ -13,8 +13,11 @@ protected:
 public:
     OrbitDeterminationApp(QWidget* parent = nullptr);
     ~OrbitDeterminationApp();
-
+private:
+    void ReadSettings();
+    void WriteSettings();
 private:
     Ui::OrbitDeterminationAppClass ui;
     ConcreteMediator1* m_pConcreteMediator1;
+    QSettings m_applicationSettings;
 };

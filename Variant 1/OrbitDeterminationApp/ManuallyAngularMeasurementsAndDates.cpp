@@ -15,53 +15,55 @@ SecondInputParameters::ManuallyAngularMeasurementsAndDate::ManuallyAngularMeasur
 	this->ReadSettings();
 
 	// first measurement
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->alphaLineEdit_1,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetAlpha1);
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_1,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDelta1);
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->dateTimeEdit_1,
 		&QAbstractSpinBox::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDate1);
 	// second measurement
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->alphaLineEdit_2,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetAlpha2);
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_2,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDelta2);
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->dateTimeEdit_2,
 		&QAbstractSpinBox::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDate2);
 	// third measurement
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->alphaLineEdit_3,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetAlpha3);
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_3,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDelta3);
-	connect(
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->dateTimeEdit_3,
 		&QAbstractSpinBox::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDate3);
+
+	m_pOrbitDeterminationAppClass->spinBox->setSpecialValueText("1");
 };
 
 SecondInputParameters::ManuallyAngularMeasurementsAndDate::~ManuallyAngularMeasurementsAndDate()
@@ -149,9 +151,10 @@ void SecondInputParameters::ManuallyAngularMeasurementsAndDate::WriteSettings()
 	m_componentsSettings.endGroup();
 };
 
-double SecondInputParameters::ManuallyAngularMeasurementsAndDate::GetAngularMeasurement(const QLineEdit& lineEdit)
+double SecondInputParameters::ManuallyAngularMeasurementsAndDate::GetAngularMeasurement(
+	const QLineEdit& lineEdit, bool* bOk)
 {
-	return lineEdit.text().toDouble();
+	return lineEdit.text().toDouble(bOk);
 };
 
 Structures::Date&& SecondInputParameters::ManuallyAngularMeasurementsAndDate::GetDate(const QDateTimeEdit& dateTimeEdit)
@@ -164,6 +167,82 @@ Structures::Date&& SecondInputParameters::ManuallyAngularMeasurementsAndDate::Ge
 	date.min = dateTimeEdit.dateTime().time().minute();
 	date.sec = dateTimeEdit.dateTime().time().second() + dateTimeEdit.dateTime().time().msec() / 1000.0;
 	return std::move(date);
+};
+
+bool SecondInputParameters::ManuallyAngularMeasurementsAndDate::GetAngularMeasurementsAndDates(
+	std::array<AngularMeasurements<double>, 3>& aAngularMeasurements,
+	std::array<Date, 3>& aDates)
+{
+	aAngularMeasurements[0].alpha = this->GetAngularMeasurement(
+		*m_pOrbitDeterminationAppClass->alphaLineEdit_1, &m_bOk[0]);
+	aAngularMeasurements[0].delta = this->GetAngularMeasurement(
+		*m_pOrbitDeterminationAppClass->deltaLineEdit_1, &m_bOk[1]);
+	aDates[0] = this->GetDate(
+		*m_pOrbitDeterminationAppClass->dateTimeEdit_1);
+	aAngularMeasurements[1].alpha = this->GetAngularMeasurement(
+		*m_pOrbitDeterminationAppClass->alphaLineEdit_2, &m_bOk[2]);
+	aAngularMeasurements[1].delta = this->GetAngularMeasurement(
+		*m_pOrbitDeterminationAppClass->deltaLineEdit_2, &m_bOk[3]);
+	aDates[1] = this->GetDate(
+		*m_pOrbitDeterminationAppClass->dateTimeEdit_2);
+	aAngularMeasurements[2].alpha = this->GetAngularMeasurement(
+		*m_pOrbitDeterminationAppClass->alphaLineEdit_3, &m_bOk[4]);
+	aAngularMeasurements[2].delta = this->GetAngularMeasurement(
+		*m_pOrbitDeterminationAppClass->deltaLineEdit_3, &m_bOk[5]);
+	aDates[2] = this->GetDate(
+		*m_pOrbitDeterminationAppClass->dateTimeEdit_3);
+	if (std::all_of(m_bOk.begin(), m_bOk.end(), [](const bool& bOk) {
+		return bOk == true;
+		}))
+		return true;
+	else
+		return false;
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetReadOnlyAllMeasurements(bool a_bOn)
+{
+	m_pOrbitDeterminationAppClass->alphaLineEdit_1->setReadOnly(a_bOn);
+	m_pOrbitDeterminationAppClass->deltaLineEdit_1->setReadOnly(a_bOn);
+	m_pOrbitDeterminationAppClass->dateTimeEdit_1->setReadOnly(a_bOn);
+
+	m_pOrbitDeterminationAppClass->alphaLineEdit_2->setReadOnly(a_bOn);
+	m_pOrbitDeterminationAppClass->deltaLineEdit_2->setReadOnly(a_bOn);
+	m_pOrbitDeterminationAppClass->dateTimeEdit_2->setReadOnly(a_bOn);
+
+	m_pOrbitDeterminationAppClass->alphaLineEdit_3->setReadOnly(a_bOn);
+	m_pOrbitDeterminationAppClass->deltaLineEdit_3->setReadOnly(a_bOn);
+	m_pOrbitDeterminationAppClass->dateTimeEdit_3->setReadOnly(a_bOn);
+};
+
+//int SecondInputParameters::ManuallyAngularMeasurementsAndDate::valueFromText(const QString& text) const
+//{
+//	//static const QRegularExpression regExp(tr("(\\d+)(\\s*[xx]\\s*\\d+)?"));
+//	//Q_ASSERT(regExp.isValid());
+//
+//	//const QRegularExpressionMatch match = regExp.match(text);
+//	//if (match.isValid())
+//	//	return match.captured(1).toInt();
+//	//return 0;
+//};
+//
+//QString SecondInputParameters::ManuallyAngularMeasurementsAndDate::textFromValue(int value) const
+//{
+//	//return tr("%1 x %1").arg(value);
+//};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::ClearAll()
+{
+	m_pOrbitDeterminationAppClass->alphaLineEdit_1->clear();
+	m_pOrbitDeterminationAppClass->deltaLineEdit_1->clear();
+	m_pOrbitDeterminationAppClass->dateTimeEdit_1->clear();
+
+	m_pOrbitDeterminationAppClass->alphaLineEdit_2->clear();
+	m_pOrbitDeterminationAppClass->deltaLineEdit_2->clear();
+	m_pOrbitDeterminationAppClass->dateTimeEdit_2->clear();
+
+	m_pOrbitDeterminationAppClass->alphaLineEdit_3->clear();
+	m_pOrbitDeterminationAppClass->deltaLineEdit_3->clear();
+	m_pOrbitDeterminationAppClass->dateTimeEdit_3->clear();
 };
 
 void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetAlpha1()

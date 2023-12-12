@@ -14,6 +14,8 @@ namespace FirstInputParameters
 		~ObservationPoints();
 		void SetReadOnlyFirstColumn(bool a_bOn);
 		void SetReadOnlyAllColumns(bool a_bOn);
+		void SetEnabledColumns(bool bOn);
+		void ClearAll();
 	private:
 		void ReadSettings();
 		void WriteSettings();

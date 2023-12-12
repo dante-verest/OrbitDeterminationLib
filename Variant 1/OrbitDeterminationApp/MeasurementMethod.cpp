@@ -59,3 +59,22 @@ void FirstInputParameters::MeasurementMethod::Items(int a_nIndex)
 		break;
 	}
 };
+
+QString FirstInputParameters::MeasurementMethod::GetCurrentItem()
+{
+	int index = m_pOrbitDeterminationAppClass->methodComboBox->currentIndex();
+	QString methodName;
+	switch (index)
+	{
+	case 0:
+		methodName = "Gauss";
+		break;
+	case 1:
+		methodName = "Laplas";
+		break;
+	case 2:
+		methodName = "Escobal";
+		break;
+	}
+	return methodName;
+};

@@ -42,15 +42,12 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 		switch (event)
 		{
 		case ChoosingGaussMethod:
-			//m_funcMethodFunction = Gauss;
 			m_methodName = "Gauss";
 			break;
 		case ChoosingLaplasMethod:
-			//m_funcMethodFunction = Laplas;
 			m_methodName = "Laplas";
 			break;
 		case ChoosingEscobalMethod:
-			//m_funcMethodFunction = Escobal;
 			m_methodName = "Escobal";
 			break;
 		};
@@ -60,7 +57,9 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 		switch (event)
 		{
 		case SettingConstObservationPoint:
-
+			m_pObservationPoints->SetReadOnlyAllColumns(true);
+			m_bIsConstObservationPoint = true;
+			m_bIsOwnObservationPoint = false;
 			break;
 		case ChoosingMinskPoint:
 			//m_aPoints[0].phi = 
@@ -98,6 +97,8 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 			break;
 		case SettingOwnObservationPoint:
 			m_pObservationPoints->SetReadOnlyAllColumns(false);
+			m_bIsConstObservationPoint = false;
+			m_bIsOwnObservationPoint = true;
 			break;
 		}
 	}
@@ -106,16 +107,16 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 		switch (event)
 		{
 		case SettingManually:
-			m_pAngularMeasurementsAndDate->SetReadOnlyAllMeasurements(false);
+			m_pManuallyAngularMeasurementsAndDate->SetReadOnlyAllMeasurements(false);
 			break;
 		case SettingReadFromFile:
-			
+			m_pManuallyAngularMeasurementsAndDate->SetReadOnlyAllMeasurements(true);
 			break;
 		case SettingReadFromTLEfile:
 			
 			break;
 		case AddingTLEfilePath:
-			m_strTLEfilePath = QFileDialog::getOpenFileName();
+			
 			break;
 		}
 	}
@@ -124,7 +125,7 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 		switch (event)
 		{
 		case AddingOutputFilePath:
-			m_strOutputFilePath = QFileDialog::getOpenFileName();
+			
 			break;
 		case WritingVectors:
 
@@ -181,10 +182,14 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 		switch (event)
 		{
 		case ChoosingOneObservationPoint:
-			m_pOrbitDeterminationAppClass->columnsLabel->setEnabled(false);
-			m_pOrbitDeterminationAppClass->firstColumnCheckBox->setEnabled(false);
-			m_pOrbitDeterminationAppClass->secondColumnCheckBox->setEnabled(false);
-			m_pOrbitDeterminationAppClass->thirdColumnCheckBox->setEnabled(false);
+
+			if (m_bIsConstObservationPoint)
+				m_pObservationPoints->SetEnabledColumns(false);
+			break;
+		case ChoosingManyObservationPoints:
+
+			if (m_bIsOwnObservationPoint)
+				m_pObservationPoints->SetEnabledColumns(true);
 			break;
 		case EnteringPhi1:
 			m_aPoints[0].phi = m_pManuallyObservationPoints->
@@ -229,81 +234,26 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 		switch (event)
 		{
 		case Calculate:
-			//if (!m_aAngularMeasurements.empty() && !m_aDates.empty() && !m_aPoints.empty())
-			//{
-			//	m_funcMethodFunction(m_aAngularMeasurements, m_aDates, m_aPoints, m_r_2, m_v_2, m_orbitalParameters);
-			//	m_pOutputVectorsAndOrbitalParameters->SetResultsToLineEdits(m_r_2, m_v_2, m_orbitalParameters);
-			//}
-			//else
-			{
-				int index = m_pOrbitDeterminationAppClass->methodComboBox->currentIndex();
-				switch (index)
+			if(m_methodName == "") m_methodName = m_pMeasurementMethod->GetCurrentItem().toStdString();
+			if (m_pManuallyAngularMeasurementsAndDate->GetAngularMeasurementsAndDates(m_aAngularMeasurements, m_aDates) &&
+				m_pManuallyObservationPoints->GetObservationPoints(m_aPoints))
+				if (m_pGlobalButtons->Calculate(m_methodName.c_str(), m_aAngularMeasurements, m_aDates, m_aPoints,
+					m_r_2, m_v_2, m_orbitalParameters, &m_calculateTime))
 				{
-				case ChoosingGaussMethod:
-					//m_funcMethodFunction = Gauss;
-					m_methodName = "Gauss";
-					break;
-				case ChoosingLaplasMethod:
-					//m_funcMethodFunction = Laplas;
-					m_methodName = "Laplas";
-					break;
-				case ChoosingEscobalMethod:
-					//m_funcMethodFunction = Escobal;
-					m_methodName = "Escobal";
-					break;
-				};
-				m_aAngularMeasurements[0].alpha = m_pManuallyAngularMeasurementsAndDate->
-					GetAngularMeasurement(*m_pOrbitDeterminationAppClass->alphaLineEdit_1);
-				m_aAngularMeasurements[1].alpha = m_pManuallyAngularMeasurementsAndDate->
-					GetAngularMeasurement(*m_pOrbitDeterminationAppClass->alphaLineEdit_2);
-				m_aAngularMeasurements[2].alpha = m_pManuallyAngularMeasurementsAndDate->
-					GetAngularMeasurement(*m_pOrbitDeterminationAppClass->alphaLineEdit_3);
-				m_aAngularMeasurements[0].delta = m_pManuallyAngularMeasurementsAndDate->
-					GetAngularMeasurement(*m_pOrbitDeterminationAppClass->deltaLineEdit_1);
-				m_aAngularMeasurements[1].delta = m_pManuallyAngularMeasurementsAndDate->
-					GetAngularMeasurement(*m_pOrbitDeterminationAppClass->deltaLineEdit_2);
-				m_aAngularMeasurements[2].delta = m_pManuallyAngularMeasurementsAndDate->
-					GetAngularMeasurement(*m_pOrbitDeterminationAppClass->deltaLineEdit_3);
-				m_aDates[0] = m_pManuallyAngularMeasurementsAndDate->
-					GetDate(*m_pOrbitDeterminationAppClass->dateTimeEdit_1);
-				m_aDates[1] = m_pManuallyAngularMeasurementsAndDate->
-					GetDate(*m_pOrbitDeterminationAppClass->dateTimeEdit_2);
-				m_aDates[2] = m_pManuallyAngularMeasurementsAndDate->
-					GetDate(*m_pOrbitDeterminationAppClass->dateTimeEdit_3);
-				m_aPoints[0].phi = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->phiLineEdit_1);
-				m_aPoints[1].phi = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->phiLineEdit_2);
-				m_aPoints[2].phi = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->phiLineEdit_3);
-				m_aPoints[0].lambda = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->lambdaLineEdit_1);
-				m_aPoints[1].lambda = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->lambdaLineEdit_2);
-				m_aPoints[2].lambda = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->lambdaLineEdit_3);
-				m_aPoints[0].H = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->HlineEdit_1);
-				m_aPoints[1].H = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->HlineEdit_2);
-				m_aPoints[2].H = m_pManuallyObservationPoints->
-					GetObservationPointsField(*m_pOrbitDeterminationAppClass->HlineEdit_3);
-				m_bIsCalculatingSuccess = Method(m_methodName, m_aAngularMeasurements, m_aDates, m_aPoints, m_r_2, m_v_2, 
-					m_orbitalParameters, &m_calculateTime, true);
-				if (m_bIsCalculatingSuccess)
-					m_pOutputVectorsAndOrbitalParameters->SetResultsToLineEdits(m_r_2, m_v_2, m_orbitalParameters);
-				else
-				{
-					m_messageBox.setText("The " + QString(m_methodName) + " method failed! There are maybe UNDERFLOW, \n"
-						"OVERFLOW or ZERODIVIDE exceptions!\nAlso maybe there are limit of iterations (100000)!\n"
-						"Try to enter other input numbers!");
-					m_messageBox.setIcon(QMessageBox::Critical);
-					m_messageBox.exec();
+					m_pOutputVectorsAndOrbitalParameters->SetResultsToLineEdits(m_methodName.c_str(), m_r_2, m_v_2, m_orbitalParameters);
+					m_pFileResults->WriteResultsToFile(m_methodName.c_str(), m_r_2, m_v_2, m_orbitalParameters);
 				}
-			}
+			QApplication::beep();
+			m_pOrbitDeterminationAppClass->statusBar->showMessage("Время рассчёта: " + 
+				QString::number(m_calculateTime.count() * 1e-6) + " секунд.");
 			break;
 		case Clear:
-
+			m_pAngularMeasurementsAndDate->ClearAll();
+			//m_pObservationPoints->ClearAll();
+			m_pFileResults->ClearAll();
+			m_pManuallyAngularMeasurementsAndDate->ClearAll();
+			m_pManuallyObservationPoints->ClearAll();
+			m_pOutputVectorsAndOrbitalParameters->ClearAll();
 			break;
 		}
 	}
