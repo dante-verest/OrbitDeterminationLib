@@ -21,6 +21,8 @@ ConcreteMediator1::ConcreteMediator1(
 		OutputVectorsAndOrbitalParameters(aOrbitDeterminationAppClass, this);
 	m_pGlobalButtons = new Buttons::
 		GlobalButtons(aOrbitDeterminationAppClass, this);
+	m_pMenu = new Menu::
+		Menu(aOrbitDeterminationAppClass, this);
 };
 
 ConcreteMediator1::~ConcreteMediator1()
@@ -33,6 +35,7 @@ ConcreteMediator1::~ConcreteMediator1()
 	delete m_pManuallyObservationPoints;
 	delete m_pOutputVectorsAndOrbitalParameters;
 	delete m_pGlobalButtons;
+	delete m_pMenu;
 };
 
 void ConcreteMediator1::Notify(Components* sender, Commands event)
@@ -238,7 +241,7 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 			if (m_pManuallyAngularMeasurementsAndDate->GetAngularMeasurementsAndDates(m_aAngularMeasurements, m_aDates) &&
 				m_pManuallyObservationPoints->GetObservationPoints(m_aPoints))
 				if (m_pGlobalButtons->Calculate(m_methodName.c_str(), m_aAngularMeasurements, m_aDates, m_aPoints,
-					m_r_2, m_v_2, m_orbitalParameters, &m_calculateTime))
+					m_r_2, m_v_2, m_orbitalParameters, &m_calculateTime, m_bIsDebug))
 				{
 					m_pOutputVectorsAndOrbitalParameters->SetResultsToLineEdits(m_methodName.c_str(), m_r_2, m_v_2, m_orbitalParameters);
 					m_pFileResults->WriteResultsToFile(m_methodName.c_str(), m_r_2, m_v_2, m_orbitalParameters);
@@ -254,6 +257,18 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 			m_pManuallyAngularMeasurementsAndDate->ClearAll();
 			m_pManuallyObservationPoints->ClearAll();
 			m_pOutputVectorsAndOrbitalParameters->ClearAll();
+			break;
+		}
+	}
+	else if (sender == m_pMenu)
+	{
+		switch (event)
+		{
+		case IsDebug:
+			m_bIsDebug = true;
+			break;
+		case IsNotDebug:
+			m_bIsDebug = false;
 			break;
 		}
 	}

@@ -9,6 +9,7 @@
 #include "ManuallyAngularMeasurementsAndDates.h"
 #include "ManuallyObservationPoints.h"
 #include "OutputVectorsAndOrbitalParameters.h"
+#include "Menu.h"
 
 using namespace Eigen;
 using namespace Structures;
@@ -26,6 +27,7 @@ private:
 	SecondInputParameters::ManuallyObservationPoints* m_pManuallyObservationPoints;
 	Results::OutputVectorsAndOrbitalParameters* m_pOutputVectorsAndOrbitalParameters;
 	Buttons::GlobalButtons* m_pGlobalButtons;
+	Menu::Menu* m_pMenu;
 
 	//using FPT = double;
 
@@ -39,6 +41,7 @@ private:
 	Vector3<double> m_v_2;
 	OrbitalParameters<double> m_orbitalParameters;
 	std::chrono::microseconds m_calculateTime;
+	bool m_bIsDebug;
 
 	bool m_bIsConstObservationPoint;
 	bool m_bIsOwnObservationPoint;

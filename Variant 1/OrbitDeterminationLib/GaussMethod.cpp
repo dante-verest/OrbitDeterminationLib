@@ -7,11 +7,14 @@ Methods::GaussMethod::GaussMethod(
 	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints,
 	const bool isDebugFile) :
 	OrbitDeterminationMethods(angularMeasurements, t, observationPoints, isDebugFile)
-{};
+{
+	this->DebugFile("Method name: Gauss\n");
+};
 
 void Methods::GaussMethod::tau13()
 {
 	m_tau13 = m_tau3 - m_tau1;
+	this->DebugFile("\ntau13 = tau3 - tau1 = ", m_tau3, " - ", m_tau1, " = ", m_tau13, " min\n");
 };
 void Methods::GaussMethod::A_and_B()
 {
@@ -21,10 +24,14 @@ void Methods::GaussMethod::A_and_B()
 	m_A_and_B[1][1] = 0.0;
 	m_A_and_B[0][2] = -m_tau1 / m_tau13;
 	m_A_and_B[1][2] = -m_A_and_B[0][2] * (m_tau13 * m_tau13 - m_tau1 * m_tau1) / 6;
+	this->DebugFile("\nA1 = ", m_A_and_B[0][0], ", B1 = ", m_A_and_B[1][0],
+		"\nA2 = ", m_A_and_B[0][1], ", B2 = ", m_A_and_B[1][1],
+		"\nA3 = ", m_A_and_B[0][2], ", B3 = ", m_A_and_B[1][2], "\n");
 };
 void Methods::GaussMethod::L_minus_first_degree()
 {
 	m_L_minus_one_degree = m_L.reverse();
+	this->DebugFile("\nL^-1 =\n", m_L_minus_one_degree, "\n");
 };
 void Methods::GaussMethod::A_and_B_asterisks()
 {
@@ -42,16 +49,21 @@ void Methods::GaussMethod::A_and_B_asterisks()
 				m_A_and_B_asterisks[row][1] -= (m_L_minus_one_degree(col, row) * m_R.col(col).dot(m_A_and_B[1]));
 			}
 		}
+	this->DebugFile("\nA1* = ", m_A_and_B_asterisks[0][0], ", B2* = ", m_A_and_B_asterisks[0][1],
+		"\nA2* = ", m_A_and_B_asterisks[1][0], ", B2* = ", m_A_and_B_asterisks[1][1],
+		"\nA3* = ", m_A_and_B_asterisks[2][0], ", B3* = ", m_A_and_B_asterisks[2][1], "\n");
 };
 void Methods::GaussMethod::C_psi()
 {
 	// m_C_psi = 2 * m_L.col(1).dot(m_R.col(1));
 	//m_C_psi = -2 * (m_R(1, 0) * m_L(1, 0) + m_R(1, 1) * m_L(1, 1) + m_R(1, 2) * m_L(1, 2));
 	m_C_psi = -m_L.row(1).dot(m_R.row(1));
+	this->DebugFile("\nCpsi = ", m_C_psi, "\n");
 };
 void Methods::GaussMethod::R_2_2()
 {
 	m_R_2_2 = m_R.row(1).squaredNorm();
+	this->DebugFile("\nR2^2 = ", m_R_2_2, "\n");
 };
 void Methods::GaussMethod::EighthDegreeEquation()
 {
@@ -60,6 +72,7 @@ void Methods::GaussMethod::EighthDegreeEquation()
 	a = -m_A_and_B_asterisks[1][0] * (2 * m_C_psi + m_A_and_B_asterisks[1][0]) - m_R_2_2;
 	b = -2 * mu * m_A_and_B_asterisks[1][1] * (m_C_psi + m_A_and_B_asterisks[1][0]);
 	c = -pow(mu * m_A_and_B_asterisks[1][1], 2);
+	this->DebugFile("\nEighth degree equation with coefficients\na = ", a, ", b = ", b, " and c = ", c, "\n");
 	std::size_t i = 0;
 	FPT fLastResult = 0.0, fIterationResult = 0.0, fLocalDivide = 0.0;
 	const IT nXSize = 100;
@@ -78,6 +91,7 @@ void Methods::GaussMethod::EighthDegreeEquation()
 			fIterationResult >= 0 && fLastResult < 0)
 		{
 			m_r_2 = x[i];
+			this->DebugFile("Inelegant solution: r2 = ", m_r_2, "\n");
 			break;
 		}
 		fLastResult = fIterationResult;
@@ -87,18 +101,21 @@ void Methods::GaussMethod::EighthDegreeEquation()
 		fLocalDivide = f(a, b, c, m_r_2) / (8 * pow(m_r_2, 7) + 6 * a * pow(m_r_2, 5) + 3 * b * pow(m_r_2, 2));
 		m_r_2 -= fLocalDivide;
 	} while (fLocalDivide >= 1e-6);
+	this->DebugFile("Elegant solution: r2 = ", m_r_2, "\n");
 };
 void Methods::GaussMethod::u_2_and_D1D3()
 {
 	m_u_2 = mu / pow(m_r_2, 3);
 	m_D1D3[0] = m_A_and_B[0][0] + m_A_and_B[1][0] * m_u_2;
 	m_D1D3[1] = m_A_and_B[0][2] + m_A_and_B[1][2] * m_u_2;
+	this->DebugFile("\nu2 = ", m_u_2, "\nD1 = ", m_D1D3[0], ", D3 = ", m_D1D3[1], "\n");
 };
 void Methods::GaussMethod::rho()
 {
 	m_rho[0] = (m_A_and_B_asterisks[0][0] + m_A_and_B_asterisks[0][1] * m_u_2) / m_D1D3[0];
 	m_rho[1] = m_A_and_B_asterisks[1][0] + m_A_and_B_asterisks[1][1] * m_u_2;
 	m_rho[2] = (m_A_and_B_asterisks[2][0] + m_A_and_B_asterisks[2][1] * m_u_2) / m_D1D3[1];
+	this->DebugFile("\nrho =\n", m_rho, "\n");
 };
 void Methods::GaussMethod::HerrickGibbsFormulas()
 {
@@ -110,12 +127,17 @@ void Methods::GaussMethod::HerrickGibbsFormulas()
 	m_normOfr_2_point = m_r.row(1).dot(m_r_2_point) / m_normOfr_2; // 7.146
 	m_V_2 = m_r_2_point.norm(); // 7.147
 	m_a = 1 / (2 / m_normOfr_2 - m_V_2 * m_V_2 / mu); // 7.148
+	this->DebugFile("Herrick-Gibbs formulas:\n||r2|| = ", m_normOfr_2,
+		" km\nd1 = ", m_d[0], ", d2 = ", m_d[1], " and d3 = ", m_d[2],
+		"\nr2_point = ", m_r_2_point, "\n||r2_point|| = ", m_normOfr_2_point,
+		"\nV2 = ", m_V_2, " km/min\na = ", m_a, " km\n");
 };
 Methods::GaussMethod::FPT Methods::GaussMethod::f(const FPT V_2_norm, const FPT r_2_norm, const FPT r_2_point_norm, const FPT tau)
 {
 	FPT u_0 = mu / pow(r_2_norm, 3); // 3.212
 	FPT p_0 = r_2_point_norm * r_2_norm / pow(r_2_norm, 2); // 3.218
 	FPT q_0 = (pow(V_2_norm, 2) - pow(r_2_norm, 2) * u_0) / pow(r_2_norm, 2); // 3.219
+	this->DebugFile("f-function coefficients:\nu0 = ", u_0, ", p0 = ", p_0, " and q0 = ", q_0, "\n");
 	return (1 - u_0 * pow(tau, 2) / 2 + u_0 * p_0 * pow(tau, 3) / 2 +
 		(3 * u_0 * q_0 - 15 * u_0 * pow(p_0, 2) + pow(u_0, 2)) * pow(tau, 4) / 24 +
 		(7 * u_0 + pow(p_0, 3) - 3 * u_0 * p_0 * q_0 - pow(u_0, 2) * p_0) * pow(tau, 5) / 8 +
@@ -128,6 +150,7 @@ Methods::GaussMethod::FPT Methods::GaussMethod::g(const FPT V_2_norm, const FPT 
 	FPT u_0 = mu / pow(r_2_norm, 3); // 3.212
 	FPT p_0 = r_2_point_norm * r_2_norm / pow(r_2_norm, 2); // 3.218
 	FPT q_0 = (pow(V_2_norm, 2) - pow(r_2_norm, 2) * u_0) / pow(r_2_norm, 2); // 3.219
+	this->DebugFile("g-function coefficients:\nu0 = ", u_0, ", p0 = ", p_0, " and q0 = ", q_0, "\n");
 	return (tau - u_0 * pow(tau, 3) / 6 + u_0 * p_0 * pow(tau, 4) / 4 + (9 * u_0 * q_0 - 45 * u_0 * pow(p_0, 2) + pow(u_0, 2)) * pow(tau, 5) / 120 +
 		(210 * u_0 * pow(p_0, 3) - 90 * u_0 * p_0 * q_0 - 15 * pow(u_0, 2) * p_0) * pow(tau, 6) / 360 +
 		(3150 * u_0 * pow(p_0, 2) * q_0 - 54 * pow(u_0, 2) * q_0 - 225 * u_0 * pow(q_0, 2) - 4725 * u_0 * pow(p_0, 4) + 630 * pow(u_0 * p_0, 2) - pow(u_0, 3)) * pow(tau, 7) / 5040 +
@@ -135,11 +158,12 @@ Methods::GaussMethod::FPT Methods::GaussMethod::g(const FPT V_2_norm, const FPT 
 };
 void Methods::GaussMethod::Loop()
 {
-	//while (true)
+	this->DebugFile("\nGauss iteration loop:\n");
 	for(std::size_t iter = 0; iter < 100000; iter++)
 	{
 		for (std::size_t i = 0; i < 3; i++)
 			m_r.row(i) = m_rho[i] * m_L.row(i) - m_R.row(i);
+		this->DebugFile("\niteration = ", iter, "\nr =\n", m_r, "\n");
 		HerrickGibbsFormulas();
 		m_f_1 = f(m_V_2, m_normOfr_2, m_normOfr_2_point, m_tau1);
 		m_g_1 = g(m_V_2, m_normOfr_2, m_normOfr_2_point, m_tau1);
@@ -153,12 +177,20 @@ void Methods::GaussMethod::Loop()
 		m_rho_n[0] = m_G.dot(m_L_minus_one_degree.col(0)) / m_c[0];
 		m_rho_n[1] = m_G.dot(m_L_minus_one_degree.col(1)) / m_c[1];
 		m_rho_n[2] = m_G.dot(m_L_minus_one_degree.col(2)) / m_c[2];
+		this->DebugFile("f1 = ", m_f_1, ", g1 = ", m_g_1, "\nf3 = ", m_f_3, ", g3 = ", m_g_3,
+			"\nD* = ", m_D_asterisk, "\nc =\n", m_c, "\nG = ", m_G, "\nrho_n =\n", m_rho_n, "\n");
 		if (ComparisonLessThanCriteria(std::fabs(m_rho_n[0] - m_rho[0]), 1e-6) &&
 			ComparisonLessThanCriteria(std::fabs(m_rho_n[1] - m_rho[1]), 1e-6) &&
 			ComparisonLessThanCriteria(std::fabs(m_rho_n[2] - m_rho[2]), 1e-6))
+		{
+			this->DebugFile("The criterion was fulfiled on iteration ", iter, " !\n");
 			break;
+		}
 		else
+		{
 			m_rho = m_rho_n;
+			this->DebugFile("The criterion isn\'t met! Therefore rho_n-1 = rho_n =\n", m_rho, "\n");
+		}
 	}
 };
 void Methods::GaussMethod::r_2_and_v_2()
@@ -166,6 +198,7 @@ void Methods::GaussMethod::r_2_and_v_2()
 	m_r_2_out = m_rho_n - m_R.row(1).transpose();
 	// èç êì/ìèí â êì/ñ
 	m_v_2_out = (- m_d[0] * m_r.row(0) + m_d[1] * m_r.row(1) + m_d[2] * m_r.row(2)).transpose() / 60;
+	this->DebugFile("\nOutput result vectors:\nr2 =\n", m_r_2_out, "\nv2 =\n", m_v_2_out, "\n");
 };
 void Methods::GaussMethod::MethodsCalculateLoop()
 {

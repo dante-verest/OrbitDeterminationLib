@@ -59,7 +59,10 @@ enum Commands
 	EnteringH3,
 	// GlobalButtons class
 	Calculate,
-	Clear
+	Clear,
+	// Menu
+	IsDebug,
+	IsNotDebug
 };
 
 class Components : public QSpinBox

@@ -21,10 +21,11 @@ namespace Methods
 	public:
 		using FPT = double;
 		using IT = int;
+		using UIT = unsigned int;
 		//const FPT M_PI = 3.415926535897932384626433832795; // число Пифагора
 	protected:
 		// debug-файл
-		//std::ofstream m_debugFile;
+		std::unique_ptr<std::ofstream> m_debugFile;
 
 		// Windows-exceptions
 		IT cw;
@@ -43,7 +44,7 @@ namespace Methods
 		std::array<AngularMeasurements<FPT>, 3> m_angularMeasurements;	// углы восхождения и склонения
 		std::array<Date, 3> m_t;										// время наблюдения
 		std::array<ObservationPoint<FPT>, 3> m_observationPoints;		// точки наблюдения
-		bool m_isDebugFile;												// разрешить запись вычислений в файл
+		//bool m_isDebugFile;												// разрешить запись вычислений в файл
 
 		// output data
 		Vector3<FPT> m_r_2_out, m_v_2_out;			// получаемые радиус-векторы расстояния и скорости
@@ -51,7 +52,7 @@ namespace Methods
 		std::chrono::microseconds m_calculateTime;	// время выполнения вычислений
 
 		// variables for calculations
-		std::array<FPT, 3> m_JulianDate/*{ 0.0 }*/;
+		std::array<FPT, 3> m_JulianDate{ 0.0 };
 		FPT m_tau1{ 0.0 }, m_tau3{ 0.0 };
 		std::array<std::array<FPT, 2>, 3> m_G{ 0.0 };
 		std::array<FPT, 3> m_Theta_LST{ 0.0 };
@@ -69,6 +70,12 @@ namespace Methods
 		// вспомогательные методы
 		bool AreEqual(const FPT comparable, const FPT comparative, const FPT epsilon);
 		bool ComparisonLessThanCriteria(const FPT comparable, const FPT criteria);
+		template<typename ... Ts>
+		void DebugFile(Ts ... args)
+		{
+			if (m_debugFile.get()->is_open())
+				((*m_debugFile << args), ...);
+		};
 	public:
 		OrbitDeterminationMethods();
 		OrbitDeterminationMethods(
@@ -77,6 +84,8 @@ namespace Methods
 			const std::array<ObservationPoint<FPT>, 3>& observationPoints,
 			const bool isDebugFile = false);
 		virtual ~OrbitDeterminationMethods();
+		//OrbitDeterminationMethods(const OrbitDeterminationMethods&);
+		//OrbitDeterminationMethods& operator =(const OrbitDeterminationMethods&);
 		void TemplateMethod();
 		const Vector3<FPT>& get_r_2() const;
 		const Vector3<FPT>& get_v_2() const;

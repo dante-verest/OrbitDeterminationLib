@@ -12,6 +12,14 @@ SecondInputParameters::ManuallyAngularMeasurementsAndDate::ManuallyAngularMeasur
 	m_pOrbitDeterminationAppClass->alphaLineEdit_3->setValidator(m_pDoubleValidator);
 	m_pOrbitDeterminationAppClass->deltaLineEdit_3->setValidator(m_pDoubleValidator);
 
+	//QStringList wordList;
+	//wordList << "1" << "2" << "3";
+	//QCompleter* completer = new QCompleter(wordList);
+	//completer->setCaseSensitivity(Qt::CaseSensitive);
+	//completer->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
+	//m_pOrbitDeterminationAppClass->alphaLineEdit_1->setCompleter(completer);
+	//m_pOrbitDeterminationAppClass->alphaLineEdit_1->geometry();
+
 	this->ReadSettings();
 
 	// first measurement

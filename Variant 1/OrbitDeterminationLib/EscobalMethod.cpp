@@ -7,12 +7,15 @@ Methods::EscobalMethod::EscobalMethod(
 	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints,
 	const bool isDebugFile) :
 	OrbitDeterminationMethods(angularMeasurements, t, observationPoints, isDebugFile)
-{};
+{
+	this->DebugFile("Method name: Escobal (double r-iteration)\n");
+};
 
 void Methods::EscobalMethod::C_psi()
 {
 	for (std::size_t column = 0; column < 3; column++)
 		m_C_psi[column] = -2 * m_L.row(column).dot(m_R.row(column));
+	this->DebugFile("\nC1psi = ", m_C_psi[0], "\nC2psi = ", m_C_psi[1], "\nC3psi = ", m_C_psi[2], "\n");
 };
 void Methods::EscobalMethod::W_tilda()
 {
@@ -24,6 +27,7 @@ void Methods::EscobalMethod::W_tilda()
 	//m_W_tilda[2] = (m_r(0, 0) * m_r(1, 1) - m_r(1, 0) * m_r(0, 1)) /
 	//	fProductOf_r1r2_Norms;
 	m_W_tilda = m_r.row(0).cross(m_r.row(1)) / fProductOf_r1r2_Norms;
+	this->DebugFile("\nW_tilda =\n", m_W_tilda, "\n");
 };
 void Methods::EscobalMethod::cos_v_and_sin_v()
 {
@@ -40,6 +44,9 @@ void Methods::EscobalMethod::cos_v_and_sin_v()
 			if (m_W_tilda[2] < 0)
 				m_sin_v_j_minus_v_k[j - 1][k] = -m_sin_v_j_minus_v_k[j - 1][k];
 		}
+	this->DebugFile("\ncos(v2 - v1) = ", m_cos_v_j_minus_v_k[0][0], ", sin(v2 - v1) = ", m_sin_v_j_minus_v_k[0][0],
+		"\ncos(v3 - v1) = ", m_cos_v_j_minus_v_k[1][0], ", sin(v3 - v1) = ", m_sin_v_j_minus_v_k[1][0],
+		"\ncos(v3 - v2) = ", m_cos_v_j_minus_v_k[1][1], ", sin(v3 - v2) = ", m_sin_v_j_minus_v_k[1][1], "\n");
 };
 void Methods::EscobalMethod::p()
 {
@@ -57,6 +64,7 @@ void Methods::EscobalMethod::p()
 		c3 = (m_normOfr[1] * m_sin_v_j_minus_v_k[0][0]) / (m_normOfr[2] * m_sin_v_j_minus_v_k[1][0]);
 		m_p = (c1 * m_normOfr[0] + c3 * m_normOfr[2] - m_normOfr[1]) / (c1 + c3 - 1);
 	}
+	this->DebugFile("\nc1 = ", c1, " and c3 = ", c3, " -> p = ", m_p, "\n");
 };
 void Methods::EscobalMethod::e_and_a()
 {
@@ -68,6 +76,9 @@ void Methods::EscobalMethod::e_and_a()
 		m_e_sin_v_2 = (m_cos_v_j_minus_v_k[1][1] * m_e_cos_v_i[1] - m_e_cos_v_i[2]) / m_sin_v_j_minus_v_k[1][0];
 	m_e_square = m_e_cos_v_i[1] * m_e_cos_v_i[1] + m_e_sin_v_2 * m_e_sin_v_2;
 	m_a = m_p / (1 - m_e_square);
+	this->DebugFile("\ne * cos(v1) = ", m_e_cos_v_i[0], "\ne * cos(v2) = ", m_e_cos_v_i[1],
+		"\ne * cos(v3) = ", m_e_cos_v_i[2], "\ne * sin(v2) = ", m_e_sin_v_2,
+		"\ne^2 = ", m_e_square, "\na = ", m_a, " km\n");
 };
 void Methods::EscobalMethod::EllipticOrHyperbolicMotion(const std::size_t row)
 {
@@ -81,6 +92,7 @@ void Methods::EscobalMethod::EllipticOrHyperbolicMotion(const std::size_t row)
 		n = sqrt(mu / pow(m_a, 3)); // 7.299
 		S_e = m_normOfr[1] * sqrt(1 - m_e_square) * m_e_sin_v_2 / m_p; // 7.300
 		C_e = m_normOfr[1] * (m_e_square + m_e_cos_v_i[1]) / m_p; // 7.301
+		this->DebugFile("Elliptic motion:\nn = ", n, "\nSe = ", S_e, " and Ce = ", C_e, "\n");
 		for (i = 0; i < 2; i++) 
 		{
 			m_sin_E_i_minus_E_j = m_normOfr[i + i] * m_sin_v_j_minus_v_k[i][i] / sqrt(m_a * m_p) +
@@ -91,6 +103,10 @@ void Methods::EscobalMethod::EllipticOrHyperbolicMotion(const std::size_t row)
 			M_j_minus_M_i = pow(-1, i + 1) * m_E_j_minus_E_i + 2 * S_e * pow(sin(m_E_j_minus_E_i / 2), 2) +
 				pow(-1, i) * C_e * m_sin_E_i_minus_E_j;
 			m_F[row][i] = tau[i] - M_j_minus_M_i / n;
+			this->DebugFile("\nsin(E", 2 + i, " - E", 1 + i, ") = ", m_sin_E_i_minus_E_j,
+				", cos(E", 2 + i, " - E", 1 + i, ") = ", m_cos_E_i_minus_E_j,
+				"\nE", 2 + i, " - E", 1 + i, " = ", m_E_j_minus_E_i,
+				"\nM", 1 + i + i, " - M2 = ", M_j_minus_M_i, "\n");
 		}
 	}
 	else
@@ -98,6 +114,7 @@ void Methods::EscobalMethod::EllipticOrHyperbolicMotion(const std::size_t row)
 		n = sqrt(mu / -pow(m_a, 3)); // 7.306
 		S_h = m_normOfr[1] * sqrt(m_e_square - 1) * m_e_sin_v_2 / m_p; // 7.307
 		C_h = m_normOfr[1] * (m_e_square + m_e_cos_v_i[1]) / m_p;
+		this->DebugFile("Hyperbolic motion:\nn = ", n, "\nSe = ", S_h, " and Ce = ", C_h, "\n");
 		for (i = 0; i < 2; i++)
 		{
 			m_sh_F_i_minus_F_j = m_normOfr[i + i] * m_sin_v_j_minus_v_k[i][i] / sqrt(- m_a * m_p) +
@@ -108,6 +125,10 @@ void Methods::EscobalMethod::EllipticOrHyperbolicMotion(const std::size_t row)
 			M_j_minus_M_i = pow(-1, i) * m_F_j_minus_F_i + 2 * S_h * pow(sinh(m_F_j_minus_F_i / 2), 2) +
 				pow(-1, i + 1) * C_h * m_sh_F_i_minus_F_j; // 7.310
 			m_F[row][i] = tau[i] - M_j_minus_M_i / n; // 7.311
+			this->DebugFile("\nsh(F", 2 + i, " - F", 1 + i, ") = ", m_sh_F_i_minus_F_j,
+				", ch(F", 2 + i, " - F", 1 + i, ") = ", m_ch_F_i_minus_F_j,
+				"\nF", 2 + i, " - F", 1 + i, " = ", m_F_j_minus_F_i,
+				"\nM", 1 + i + i, " - M2 = ", M_j_minus_M_i, "\n");
 		}
 	}
 };
@@ -118,22 +139,34 @@ void Methods::EscobalMethod::Loop()
 	std::array<FPT, 2> normOfr_previous{ 0.0 };
 	std::array<FPT, 2> delta_r{ 0.0 }, Delta_r{ 0.0 };
 	FPT Delta = 0.0, Delta_1 = 0.0, Delta_2 = 0.0;
+	this->DebugFile("\nEscobal iteration loop:\n");
 	for (std::size_t iter = 0; iter < 100000; iter++)
 	{
 		for (std::size_t j = 0; j < 3; j++)
 		{
+			this->DebugFile("\niteration = ", iter, "\n");
 			switch (j)
 			{
+			case 0:
+				this->DebugFile("For F1(r1, r2) and F2(r1, r2):\n||r1|| = ",
+					m_normOfr[0], "\n||r2|| = ", m_normOfr[1], "\n");
+				break;
 			case 1:
 				normOfr_previous[0] = m_normOfr[0];
 				delta_r[0] = normOfr_previous[0] * 0.04;
 				m_normOfr[0] += delta_r[0];
+				this->DebugFile("For F1(r1 + dr1, r2) and F2(r1 + dr1, r2):\ndelta_r1 = ", 
+					delta_r[0], " -> ||r1|| + delta_r1 = ", 
+					m_normOfr[0], "\n||r2|| = ", m_normOfr[1], "\n");
 				break;
 			case 2:
 				normOfr_previous[1] = m_normOfr[1];
 				m_normOfr[0] = normOfr_previous[0];
 				delta_r[1] = normOfr_previous[1] * 0.04;
 				m_normOfr[1] += delta_r[1];
+				this->DebugFile("For F1(r1, r2 + dr2) and F2(r1, r2 + dr2):\n||r1|| = ", 
+					m_normOfr[0], "\ndelta_r2 = ", delta_r[1], " -> ||r2|| + delta_r2 = ",
+					m_normOfr[1], "\n");
 				break;
 			}
 			for (std::size_t i = 0; i < 2; i++)
@@ -148,6 +181,10 @@ void Methods::EscobalMethod::Loop()
 			m_rho[2] = m_W_tilda.dot(m_R.row(2)) / m_W_tilda.dot(m_L.row(2)); // 7.284
 			m_r.row(2) = m_rho[2] * m_L.row(2) - m_R.row(2); // 7.285
 			m_normOfr[2] = m_r.row(2).norm(); // 7.286
+			this->DebugFile("r =\n", m_r,
+				"\nrho =\n", m_rho[0], "\n", m_rho[1], "\n", m_rho[2], 
+				"\nr =\n", m_r, "\n||r1|| = ", m_normOfr[0],
+				"\n||r2|| = ", m_normOfr[1], "\n||r3|| = ", m_normOfr[2], "\n");
 			cos_v_and_sin_v();
 			p();
 			e_and_a();
@@ -164,14 +201,25 @@ void Methods::EscobalMethod::Loop()
 			m_delta_F_divide_on_delta_r[0][1] * m_F[0][0]; // 7.318
 		Delta_r[0] = -Delta_1 / Delta;
 		Delta_r[1] = -Delta_2 / Delta;
+		this->DebugFile("dF1/dr1 = ", m_delta_F_divide_on_delta_r[0][0],
+			", dF2/dr1 = ", m_delta_F_divide_on_delta_r[0][1],
+			"\ndF1/dr2 = ", m_delta_F_divide_on_delta_r[1][0],
+			", dF2/dr2 = ", m_delta_F_divide_on_delta_r[1][1], 
+			"\nDelta = ", Delta, "\nDelta1 = ", Delta_1, ", Delta2 = ", Delta_2,
+			"\nDelta_r1 = ", Delta_r[0], ", Delta_r2 = ", Delta_r[1], "\n");
 		if (ComparisonLessThanCriteria(std::fabs(Delta_r[0]), 1e-6) &&
 			ComparisonLessThanCriteria(std::fabs(Delta_r[1]), 1e-6))
+		{
+			this->DebugFile("The criterion was fulfiled on iteration ", iter, " !\n");
 			break;
+		}
 		else
 		{
 			m_normOfr[1] = normOfr_previous[1];
 			m_normOfr[0] += Delta_r[0];
 			m_normOfr[1] += Delta_r[1];
+			this->DebugFile("The criterion isn\'t met! Therefore\n||r1|| + Delta_r1 = ", m_normOfr[0],
+				", ||r2|| + Delta_r2 = ", m_normOfr[1], "\n");
 		}
 	}
 };
@@ -185,6 +233,8 @@ void Methods::EscobalMethod::r_2_and_v_2()
 		g = m_tau3 - sqrt(pow(m_a, 3) / mu) * (m_E_j_minus_E_i - m_sin_E_i_minus_E_j);
 		// èç êì/ìèí â êì/ñ
 		m_v_2_out = (m_r.row(2).transpose() - f * m_r_2_out) / (g * 60);
+		this->DebugFile("\ne^2 = ", m_e_square, 
+			" -> elliptic orbit\nOutput result vectors:\nr2 = \n", m_r_2_out, "\nv2 = \n", m_v_2_out, "\n");
 	}
 	else
 	{
@@ -193,6 +243,8 @@ void Methods::EscobalMethod::r_2_and_v_2()
 		g = m_tau3 - sqrt(pow(m_a, 3) / mu) * (m_F_j_minus_F_i - m_sh_F_i_minus_F_j);
 		// èç êì/ìèí â êì/ñ
 		m_v_2_out = (m_r.row(2).transpose() - f * m_r_2_out) / (g * 60);
+		this->DebugFile("\ne^2 = ", m_e_square,
+			" -> hyperbolic orbit\nOutput result vectors:\nr2 = \n", m_r_2_out, "\nv2 = \n", m_v_2_out, "\n");
 	}
 };
 void Methods::EscobalMethod::MethodsCalculateLoop()

@@ -45,6 +45,12 @@
     <Filter Include="Header Files\ResultParameters">
       <UniqueIdentifier>{1b556bd5-ba65-40ea-9da3-7f94e4d4027a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Menu">
+      <UniqueIdentifier>{e55ab07e-5af4-4e1a-bc5c-27daf17c55f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu">
+      <UniqueIdentifier>{b9027f82-cff3-4f80-bc81-d684e1a9db1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="OrbitDeterminationApp.qrc">
@@ -103,6 +109,9 @@
     <ClCompile Include="OutputVectorsAndOrbitalParameters.cpp">
       <Filter>Source Files\ResultParameters</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -152,6 +161,9 @@
     </QtMoc>
     <QtMoc Include="OutputVectorsAndOrbitalParameters.h">
       <Filter>Header Files\ResultParameters</Filter>
+    </QtMoc>
+    <QtMoc Include="Menu.h">
+      <Filter>Header Files\Menu</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

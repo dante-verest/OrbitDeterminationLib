@@ -133,6 +133,7 @@
     <ClCompile Include="ManuallyObservationPoints.cpp" />
     <ClCompile Include="MeasurementMethod.cpp" />
     <ClCompile Include="Mediator.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="ObservationPoints.cpp" />
     <ClCompile Include="OrbitDeterminationApp.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="Mediator.h" />
     <QtMoc Include="ObservationPoints.h" />
     <QtMoc Include="OutputVectorsAndOrbitalParameters.h" />
+    <QtMoc Include="Menu.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClCompile Include="OutputVectorsAndOrbitalParameters.cpp" />

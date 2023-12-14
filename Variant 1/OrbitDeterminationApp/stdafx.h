@@ -15,3 +15,6 @@
 #include <QRegExp>
 #include <algorithm>
 #include <QFile>
+#include <QCompleter>
+#include <QStringList>
+#include <QMenu>
