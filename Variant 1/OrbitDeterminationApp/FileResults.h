@@ -17,7 +17,7 @@ namespace FirstInputParameters
 		~FileResults();
 		void WhatWriteToFile(bool& isVectors, bool& isOrbitalParameters);
 		bool WriteResultsToFile(
-			const char* methodName,
+			const QString& methodName,
 			const Vector3<double>& r_2,
 			const Vector3<double>& v_2,
 			const OrbitalParameters<double>& aOrbitalParameters);
@@ -26,10 +26,10 @@ namespace FirstInputParameters
 		void ReadSettings();
 		void WriteSettings();
 	public slots:
-		//void IsWriteToFile(bool a_bChecked);
+		void IsWriteToFile(bool a_bChecked);
 		void AddPath();
-		void IsVectors(bool a_bChecked);
-		void IsOrbitalParameters(bool a_bChecked);
+		//void IsVectors(bool a_bChecked);
+		//void IsOrbitalParameters(bool a_bChecked);
 	};
 }
 

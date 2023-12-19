@@ -10,6 +10,7 @@
 #include "ManuallyObservationPoints.h"
 #include "OutputVectorsAndOrbitalParameters.h"
 #include "Menu.h"
+#include "StatusBar.h"
 
 using namespace Eigen;
 using namespace Structures;
@@ -18,7 +19,7 @@ using namespace Structures;
 class ConcreteMediator1 : public Mediator
 {
 private:
-	Ui::OrbitDeterminationAppClass* m_pOrbitDeterminationAppClass;
+	//Ui::OrbitDeterminationAppClass* m_pOrbitDeterminationAppClass;
 	FirstInputParameters::AngularMeasurementsAndDate* m_pAngularMeasurementsAndDate;
 	FirstInputParameters::FileResults* m_pFileResults;
 	FirstInputParameters::MeasurementMethod* m_pMeasurementMethod;
@@ -28,26 +29,9 @@ private:
 	Results::OutputVectorsAndOrbitalParameters* m_pOutputVectorsAndOrbitalParameters;
 	Buttons::GlobalButtons* m_pGlobalButtons;
 	Menu::Menu* m_pMenu;
+	StatusBar::StatusBar* m_pStatusBar;
 
 	//using FPT = double;
-
-	std::string m_methodName;
-	bool m_bIsCalculatingSuccess;
-	std::array<AngularMeasurements<double>, 3> m_aAngularMeasurements;
-	std::array<Date, 3> m_aDates;
-	std::array<ObservationPoint<double>, 3> m_aPoints;
-	std::array<bool, 3> m_aChoosedColumn;
-	Vector3<double> m_r_2;
-	Vector3<double> m_v_2;
-	OrbitalParameters<double> m_orbitalParameters;
-	std::chrono::microseconds m_calculateTime;
-	bool m_bIsDebug;
-
-	bool m_bIsConstObservationPoint;
-	bool m_bIsOwnObservationPoint;
-	//QString m_strTLEfilePath;
-	//QString m_strOutputFilePath;
-	//QMessageBox m_messageBox;
 public:
 	ConcreteMediator1(Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass);
 	~ConcreteMediator1();

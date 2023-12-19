@@ -581,16 +581,6 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QSpinBox" name="spinBox">
-                    <property name="suffix">
-                     <string> x 0</string>
-                    </property>
-                    <property name="prefix">
-                     <string>0 x </string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
                    <spacer name="horizontalSpacer_4">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>

@@ -2,7 +2,7 @@
 #include "MethodFunctions.h"
 
 bool Method(
-	const char* methodName,
+	const std::wstring& methodName,
 	const std::array<Structures::AngularMeasurements<Methods::OrbitDeterminationMethods::FPT>, 3>& angularMeasurements,
 	const std::array<Structures::Date, 3>& t,
 	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>& observationPoints,
@@ -13,11 +13,14 @@ bool Method(
 	const bool isDebugFile)
 {
 	std::unique_ptr<Methods::OrbitDeterminationMethods> method;
-	if (strcmp(methodName, "Gauss") == 0)
+	//if (strcmp(methodName, "Gauss") == 0)
+	if(methodName == L"Метод Гаусса")
 		method = std::make_unique<Methods::GaussMethod>(angularMeasurements, t, observationPoints, isDebugFile);
-	else if (strcmp(methodName, "Laplas") == 0)
+	//else if (strcmp(methodName, "Laplas") == 0)
+	else if (methodName == L"Метод Лапласа")
 		method = std::make_unique<Methods::LaplasMethod>(angularMeasurements, t, observationPoints, isDebugFile);
-	else if (strcmp(methodName, "Escobal") == 0)
+	//else if (strcmp(methodName, "Метод Эскобала") == 0)
+	else if (methodName == L"Метод Эскобала")
 		method = std::make_unique<Methods::EscobalMethod>(angularMeasurements, t, observationPoints, isDebugFile);
 	else
 		return false;

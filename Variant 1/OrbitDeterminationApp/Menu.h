@@ -12,11 +12,13 @@ namespace Menu
             Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass,
             Mediator* aMediator);
         ~Menu();
+
+        bool IsDebug();
     private:
         void ReadSettings();
         void WriteSettings();
     public slots:
-        void SetDebug(bool a_isDebug);
+        //void SetDebug(bool a_isDebug);
     };
 }
 

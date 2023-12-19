@@ -28,18 +28,14 @@ void Buttons::GlobalButtons::PushClear()
 };
 
 bool Buttons::GlobalButtons::Calculate(
-	const char* aMethodName,
+	const QString& aMethodName,
 	const std::array<AngularMeasurements<double>, 3>& aAngularMeasurements,
 	const std::array<Date, 3>& aDates,
 	const std::array<ObservationPoint<double>, 3>& aObservationPoints,
-	Vector3<double>& r_2,
-	Vector3<double>& v_2,
-	OrbitalParameters<double>& aOrbitalParameters,
-	std::chrono::microseconds* aCalculateTime,
 	bool aDebugFile)
 {
-	bool bIsCalculatingSuccess = Method(aMethodName, aAngularMeasurements, aDates, aObservationPoints,
-		r_2, v_2, aOrbitalParameters, aCalculateTime, aDebugFile);
+	bool bIsCalculatingSuccess = Method(aMethodName.toStdWString(), aAngularMeasurements, aDates, aObservationPoints,
+		m_r_2, m_v_2, m_orbitalParameters, &m_calculationTime, aDebugFile);
 	if (bIsCalculatingSuccess)
 	{
 		return bIsCalculatingSuccess;
@@ -53,4 +49,24 @@ bool Buttons::GlobalButtons::Calculate(
 		m_messageBox.exec();
 		return bIsCalculatingSuccess;
 	}
+};
+
+const Vector3<double>& Buttons::GlobalButtons::Get_r_2()
+{
+	return this->m_r_2;
+};
+
+const Vector3<double>& Buttons::GlobalButtons::Get_v_2()
+{
+	return this->m_v_2;
+};
+
+const OrbitalParameters<double>& Buttons::GlobalButtons::GetOrbitalParameters()
+{
+	return this->m_orbitalParameters;
+};
+
+const std::chrono::microseconds& Buttons::GlobalButtons::GetCalculationTime()
+{
+	return this->m_calculationTime;
 };

@@ -7,11 +7,11 @@ FirstInputParameters::FileResults::FileResults(
 {
 	this->ReadSettings();
 
-	//connect(
-	//	m_pOrbitDeterminationAppClass->fileResultsGroupBox,
-	//	static_cast<void (QGroupBox::*)(bool)>(&QGroupBox::toggled),
-	//	m_pOrbitDeterminationAppClass->fileResultsGroupBox,
-	//	static_cast<void (QGroupBox::*)(bool)>(&QGroupBox::setEnabled));
+	connect(
+		m_pOrbitDeterminationAppClass->fileResultsGroupBox,
+		static_cast<void (QGroupBox::*)(bool)>(&QGroupBox::toggled),
+		this,
+		static_cast<void (FileResults::*)(bool)>(&FileResults::IsWriteToFile));
 	connect(
 		m_pOrbitDeterminationAppClass->pathPushButton,
 		&QPushButton::pressed,
@@ -21,16 +21,16 @@ FirstInputParameters::FileResults::FileResults(
 	//	m_pOrbitDeterminationAppClass->filePathLineEdit,
 	//	static_cast<void (QLineEdit::*)(bool)>(&QLineEdit::)
 	//)
-	connect(
-		m_pOrbitDeterminationAppClass->isSpeedAndDistanceCheckBox,
-		static_cast<void (QCheckBox::*)(bool)>(&QCheckBox::toggled),
-		this,
-		static_cast<void (FileResults::*)(bool)>(&FileResults::IsVectors));
-	connect(
-		m_pOrbitDeterminationAppClass->isOrbitParametersCheckBox,
-		static_cast<void (QCheckBox::*)(bool)>(&QCheckBox::toggled),
-		this,
-		static_cast<void (FileResults::*)(bool)>(&FileResults::IsOrbitalParameters));
+	//connect(
+	//	m_pOrbitDeterminationAppClass->isSpeedAndDistanceCheckBox,
+	//	static_cast<void (QCheckBox::*)(bool)>(&QCheckBox::toggled),
+	//	this,
+	//	static_cast<void (FileResults::*)(bool)>(&FileResults::IsVectors));
+	//connect(
+	//	m_pOrbitDeterminationAppClass->isOrbitParametersCheckBox,
+	//	static_cast<void (QCheckBox::*)(bool)>(&QCheckBox::toggled),
+	//	this,
+	//	static_cast<void (FileResults::*)(bool)>(&FileResults::IsOrbitalParameters));
 };
 
 FirstInputParameters::FileResults::~FileResults()
@@ -42,7 +42,9 @@ void FirstInputParameters::FileResults::ReadSettings()
 {
 	m_componentsSettings.beginGroup("/Settings for file results");
 
-	m_pOrbitDeterminationAppClass->filePathLineEdit->setText(m_componentsSettings.value("/file path", "").toString());
+	m_pOrbitDeterminationAppClass->fileResultsGroupBox->setChecked(m_componentsSettings.value("/chosen writing results to file", false).toBool());
+	m_strOutputFilePath = m_componentsSettings.value("/file path", "").toString();
+	m_pOrbitDeterminationAppClass->filePathLineEdit->setText(m_strOutputFilePath);
 	m_pOrbitDeterminationAppClass->isSpeedAndDistanceCheckBox->setEnabled(m_componentsSettings.value("/enabled radius-vectors", false).toBool());
 	m_pOrbitDeterminationAppClass->isSpeedAndDistanceCheckBox->setChecked(m_componentsSettings.value("/chosen radius-vectors", false).toBool());
 	m_pOrbitDeterminationAppClass->isOrbitParametersCheckBox->setEnabled(m_componentsSettings.value("/enabled orbital parameters", false).toBool());
@@ -55,7 +57,8 @@ void FirstInputParameters::FileResults::WriteSettings()
 {
 	m_componentsSettings.beginGroup("/Settings for file results");
 
-	m_componentsSettings.setValue("/file path", m_pOrbitDeterminationAppClass->filePathLineEdit->text());
+	m_componentsSettings.setValue("/chosen writing results to file", m_pOrbitDeterminationAppClass->fileResultsGroupBox->isChecked());
+	m_componentsSettings.setValue("/file path", m_strOutputFilePath);
 	m_componentsSettings.setValue("/enabled radius-vectors", m_pOrbitDeterminationAppClass->isSpeedAndDistanceCheckBox->isEnabled());
 	m_componentsSettings.setValue("/chosen radius-vectors", m_pOrbitDeterminationAppClass->isSpeedAndDistanceCheckBox->isChecked());
 	m_componentsSettings.setValue("/enabled orbital parameters", m_pOrbitDeterminationAppClass->isOrbitParametersCheckBox->isEnabled());
@@ -64,10 +67,15 @@ void FirstInputParameters::FileResults::WriteSettings()
 	m_componentsSettings.endGroup();
 };
 
-//void FirstInputParameters::FileResults::IsWriteToFile(bool a_bChecked)
-//{
-//	this->m_pMediator->Notify(this, "");
-//};
+void FirstInputParameters::FileResults::IsWriteToFile(bool a_bChecked)
+{
+	if(a_bChecked)
+		if (!m_strOutputFilePath.isEmpty())
+		{
+			m_pOrbitDeterminationAppClass->isSpeedAndDistanceCheckBox->setEnabled(a_bChecked);
+			m_pOrbitDeterminationAppClass->isOrbitParametersCheckBox->setEnabled(a_bChecked);
+		}
+};
 
 void FirstInputParameters::FileResults::WhatWriteToFile(bool& isVectors, bool& isOrbitalParameters)
 {
@@ -76,13 +84,13 @@ void FirstInputParameters::FileResults::WhatWriteToFile(bool& isVectors, bool& i
 };
 
 bool FirstInputParameters::FileResults::WriteResultsToFile(
-	const char* methodName,
+	const QString& methodName,
 	const Vector3<double>& r_2,
 	const Vector3<double>& v_2,
 	const OrbitalParameters<double>& aOrbitalParameters)
 {
-	if (m_strOutputFilePath.isEmpty())
-		m_strOutputFilePath = m_pOrbitDeterminationAppClass->filePathLineEdit->text();
+	//if (m_strOutputFilePath.isEmpty())
+	//	m_strOutputFilePath = m_pOrbitDeterminationAppClass->filePathLineEdit->text();
 	QFile m_toFile(m_strOutputFilePath);
 	if (!m_toFile.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
 	{
@@ -95,21 +103,29 @@ bool FirstInputParameters::FileResults::WriteResultsToFile(
 	if (m_pOrbitDeterminationAppClass->isSpeedAndDistanceCheckBox->isChecked())
 	{
 		out << "Radius-vectors:\n";
-		QString r_2_string, v_2_string;
-		static const char letters[3][2] = { "i", "j", "k" };
-		for (std::size_t i = 0; i < 3; i++)
-		{
-			if (r_2[i] < 0)
-				r_2_string += QString("%1").arg(r_2[i]);
-			else
-				r_2_string += QString("+%1").arg(r_2[i]);
-			r_2_string += letters[i];
-			if (v_2[i] < 0)
-				v_2_string += QString("%1").arg(v_2[i]);
-			else
-				v_2_string += QString("+%1").arg(v_2[i]);
-			v_2_string += letters[i];
-		}
+		QString r_2_string = QString("%1i%2j%3k").
+			arg(QString::number(r_2[0])).
+			arg(r_2[1] < 0 ? QString::number(r_2[1]) : ("+" + QString::number(r_2[1]))).
+			arg(r_2[2] < 0 ? QString::number(r_2[2]) : ("+" + QString::number(r_2[2])));
+		QString v_2_string = QString("%1i%2j%3k").
+			arg(QString::number(v_2[0])).
+			arg(v_2[1] < 0 ? QString::number(v_2[1]) : ("+" + QString::number(v_2[1]))).
+			arg(v_2[2] < 0 ? QString::number(v_2[2]) : ("+" + QString::number(v_2[2])));
+		//static const char letters[3][2] = { "i", "j", "k" };
+		//for (std::size_t i = 0; i < 3; i++)
+		//{
+		//	if (r_2[i] < 0)
+		//		r_2_string += QString("%1").arg(r_2[i]);
+		//	else
+		//		r_2_string += QString("+%1").arg(r_2[i]);
+		//	r_2_string += letters[i];
+		//	if (v_2[i] < 0)
+		//		v_2_string += QString("%1").arg(v_2[i]);
+		//	else
+		//		v_2_string += QString("+%1").arg(v_2[i]);
+		//	v_2_string += letters[i];
+		//}	
+
 		out << "\tr_2:\t" << r_2_string << "\n\tv_2:\t" << v_2_string << "\n";
 	}
 	if (m_pOrbitDeterminationAppClass->isOrbitParametersCheckBox->isChecked())
@@ -149,15 +165,15 @@ void FirstInputParameters::FileResults::AddPath()
 		m_pOrbitDeterminationAppClass->isOrbitParametersCheckBox->setEnabled(true);
 	}
 };
-
-void FirstInputParameters::FileResults::IsVectors(bool a_bChecked)
-{
-	if (a_bChecked)
-		this->m_pMediator->Notify(this, Commands::WritingVectors);
-};
-
-void FirstInputParameters::FileResults::IsOrbitalParameters(bool a_bChecked)
-{
-	if (a_bChecked)
-		this->m_pMediator->Notify(this, Commands::WritingOrbitalParameters);
-};
+//
+//void FirstInputParameters::FileResults::IsVectors(bool a_bChecked)
+//{
+//	if (a_bChecked)
+//		this->m_pMediator->Notify(this, Commands::WritingVectors);
+//};
+//
+//void FirstInputParameters::FileResults::IsOrbitalParameters(bool a_bChecked)
+//{
+//	if (a_bChecked)
+//		this->m_pMediator->Notify(this, Commands::WritingOrbitalParameters);
+//};

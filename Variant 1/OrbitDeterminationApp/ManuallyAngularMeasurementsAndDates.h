@@ -9,22 +9,31 @@ namespace SecondInputParameters
 	{
 		Q_OBJECT
 	private:
+		std::array<AngularMeasurements<double>, 3> m_aAngularMeasurements;
+		std::array<Date, 3> m_aDates;
 		std::array<bool, 6> m_bOk;
 	public:
 		ManuallyAngularMeasurementsAndDate(
 			Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass,
 			Mediator* aMediator);
 		~ManuallyAngularMeasurementsAndDate();
-		double GetAngularMeasurement(const QLineEdit& lineEdit, bool* bOk = nullptr);
-		Structures::Date&& GetDate(const QDateTimeEdit& dateTimeEdit);
-		bool GetAngularMeasurementsAndDates(
-			std::array<AngularMeasurements<double>, 3>& aAngularMeasurements,
-			std::array<Date, 3>& aDates);
+
+		void SetAngularMeasurements(const std::array<AngularMeasurements<double>, 3>& aAngularMeasurements);
+		const std::array<AngularMeasurements<double>, 3>& GetAngularMeasurements();
+		void SetDates(const std::array<Date, 3>& aDates);
+		const std::array<Date, 3>& GetDates();
+
+		//bool GetAngularMeasurementsAndDates(
+		//	std::array<AngularMeasurements<double>, 3>& aAngularMeasurements,
+		//	std::array<Date, 3>& aDates);
 		void SetReadOnlyAllMeasurements(bool a_bOn);
 		//int valueFromText(const QString& text) const override;
 		//QString textFromValue(int value) const override;
 		void ClearAll();
 	private:
+		double GetAngularMeasurement(QLineEdit* lineEdit, bool* bOk = nullptr);
+		Structures::Date&& GetDate(QDateTimeEdit* dateTimeEdit);
+
 		void ReadSettings();
 		void WriteSettings();
 	public slots:

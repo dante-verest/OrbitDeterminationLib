@@ -7,11 +7,11 @@ Menu::Menu::Menu(
 {
 	this->ReadSettings();
 
-	connect(
-		m_pOrbitDeterminationAppClass->debugAction,
-		static_cast<void (QAction::*)(bool)>(&QAction::toggled),
-		this,
-		static_cast<void (Menu::*)(bool)>(&Menu::SetDebug));
+	//connect(
+	//	m_pOrbitDeterminationAppClass->debugAction,
+	//	static_cast<void (QAction::*)(bool)>(&QAction::toggled),
+	//	this,
+	//	static_cast<void (Menu::*)(bool)>(&Menu::SetDebug));
 };
 
 Menu::Menu::~Menu()
@@ -37,10 +37,15 @@ void Menu::Menu::WriteSettings()
 	m_componentsSettings.endGroup();
 };
 
-void Menu::Menu::SetDebug(bool a_isDebug)
+bool Menu::Menu::IsDebug()
 {
-	if (a_isDebug)
-		this->m_pMediator->Notify(this, Commands::IsDebug);
-	else
-		this->m_pMediator->Notify(this, Commands::IsNotDebug);
+	return m_pOrbitDeterminationAppClass->debugAction->isChecked();
 };
+
+//void Menu::Menu::SetDebug(bool a_isDebug)
+//{
+//	if (a_isDebug)
+//		this->m_pMediator->Notify(this, Commands::IsDebug);
+//	else
+//		this->m_pMediator->Notify(this, Commands::IsNotDebug);
+//};

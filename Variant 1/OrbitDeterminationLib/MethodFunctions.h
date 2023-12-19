@@ -12,7 +12,7 @@
 #include "EscobalMethod.h"
 
 extern "C++" ORBITDETERMINATIONLIB_API bool Method(
-	const char* methodName,
+	const std::wstring& methodName,
 	const std::array<Structures::AngularMeasurements<Methods::OrbitDeterminationMethods::FPT>, 3>&angularMeasurements,
 	const std::array<Structures::Date, 3>&t,
 	const std::array<Structures::ObservationPoint<Methods::OrbitDeterminationMethods::FPT>, 3>&observationPoints,

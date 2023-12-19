@@ -51,6 +51,12 @@
     <Filter Include="Source Files\Menu">
       <UniqueIdentifier>{b9027f82-cff3-4f80-bc81-d684e1a9db1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\StatusBar">
+      <UniqueIdentifier>{aec110fc-50bc-489a-8535-ff96ae8b5cdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StatusBar">
+      <UniqueIdentifier>{b4cb8de7-4506-41ad-abd0-587bd9b6d44e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="OrbitDeterminationApp.qrc">
@@ -112,6 +118,9 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="StatusBar.cpp">
+      <Filter>Source Files\StatusBar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -164,6 +173,9 @@
     </QtMoc>
     <QtMoc Include="Menu.h">
       <Filter>Header Files\Menu</Filter>
+    </QtMoc>
+    <QtMoc Include="StatusBar.h">
+      <Filter>Header Files\StatusBar</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
