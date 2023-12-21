@@ -11,7 +11,6 @@
 
 using namespace Methods;
 
-
 enum Commands
 {
 	// MeasurementMethod class
@@ -76,7 +75,8 @@ public:
 	Components(
 		Ui::OrbitDeterminationAppClass* aOrbitDeterminationAppClass = nullptr, 
 		Mediator* aMediator = nullptr);
-	~Components();
+	virtual ~Components();
+
 	void SetMediator(Mediator* aMediator);
 };
 

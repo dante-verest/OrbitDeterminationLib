@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Components.h"
 //#include "ObservationPoint.h"
+#include "ConcreteMementoForManuallyObservationPoints.h"
 
 namespace SecondInputParameters
 {
@@ -29,6 +30,9 @@ namespace SecondInputParameters
 		void SetReadOnlyAllColumns(bool a_bOn);
 
 		bool GetObservationPointsFromLineEdits();
+
+		Memento::ConcreteMementoForManuallyObservationPoints* Save();
+		void Restore(Memento::ConcreteMementoForManuallyObservationPoints* memento);
 
 		void ClearAll();
 	private:

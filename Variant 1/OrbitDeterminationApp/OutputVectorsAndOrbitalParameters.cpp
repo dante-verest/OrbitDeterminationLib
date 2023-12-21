@@ -68,22 +68,18 @@ void Results::OutputVectorsAndOrbitalParameters::WriteSettings()
 {
 	m_componentsSettings.beginGroup("/Settings for result output vectors and orbital parameters");
 
-	m_componentsSettings.setValue("/method name", m_pMethodName);
+	m_componentsSettings.setValue("/method name", m_pOrbitDeterminationAppClass->methodNameLineEdit->text());
 
-	m_componentsSettings.setValue("/r_2", QString("%1i%2j%3k").arg(QString::number(m_r_2[0])).
-		arg(m_r_2[1] < 0 ? QString::number(m_r_2[1]) : ("+" + QString::number(m_r_2[1]))).
-		arg(m_r_2[2] < 0 ? QString::number(m_r_2[2]) : ("+" + QString::number(m_r_2[2]))));
-	m_componentsSettings.setValue("/v_2", QString("%1i%2j%3k").arg(QString::number(m_v_2[0])).
-		arg(m_v_2[1] < 0 ? QString::number(m_v_2[1]) : ("+" + QString::number(m_v_2[1]))).
-		arg(m_v_2[2] < 0 ? QString::number(m_v_2[2]) : ("+" + QString::number(m_v_2[2]))));
+	m_componentsSettings.setValue("/r_2", m_pOrbitDeterminationAppClass->r_2LineEdit->text());
+	m_componentsSettings.setValue("/v_2", m_pOrbitDeterminationAppClass->v_2LineEdit->text());
 
-	m_componentsSettings.setValue("/inclination", m_orbitalParameters.i.value());
-	m_componentsSettings.setValue("/right ascention of the ascending node", m_orbitalParameters.Omega.value());
-	m_componentsSettings.setValue("/argument of perigee", m_orbitalParameters.omega.value());
-	m_componentsSettings.setValue("/eccentricity", m_orbitalParameters.e.value());
-	m_componentsSettings.setValue("/large semi-axis", m_orbitalParameters.a.value());
-	m_componentsSettings.setValue("/true anomaly", m_orbitalParameters.Theta.value());
-	m_componentsSettings.setValue("/angular momentum", m_orbitalParameters.h.value());
+	m_componentsSettings.setValue("/inclination", m_pOrbitDeterminationAppClass->inclinationLineEdit->text());
+	m_componentsSettings.setValue("/right ascention of the ascending node", m_pOrbitDeterminationAppClass->rightAscentionOfTheAscendingNodeLineEdit->text());
+	m_componentsSettings.setValue("/argument of perigee", m_pOrbitDeterminationAppClass->argumentOfPerigeeLineEdit->text());
+	m_componentsSettings.setValue("/eccentricity", m_pOrbitDeterminationAppClass->eccentricityLineEdit->text());
+	m_componentsSettings.setValue("/large semi-axis", m_pOrbitDeterminationAppClass->largeSemiaxisLineEdit->text());
+	m_componentsSettings.setValue("/true anomaly", m_pOrbitDeterminationAppClass->trueAnomalyLineEdit->text());
+	m_componentsSettings.setValue("/angular momentum", m_pOrbitDeterminationAppClass->angularMomentumLineEdit->text());
 
 	m_componentsSettings.endGroup();
 };
@@ -160,6 +156,37 @@ void Results::OutputVectorsAndOrbitalParameters::SetResultsToLineEdits()
 	m_pOrbitDeterminationAppClass->largeSemiaxisLineEdit->setText(QString::number(m_orbitalParameters.a.value()));
 	m_pOrbitDeterminationAppClass->trueAnomalyLineEdit->setText(QString::number(m_orbitalParameters.Theta.value()));
 	m_pOrbitDeterminationAppClass->angularMomentumLineEdit->setText(QString::number(m_orbitalParameters.h.value()));
+};
+
+Memento::ConcreteMementoForOutputVectorsAndOrbitalParameters*
+Results::OutputVectorsAndOrbitalParameters::Save()
+{
+	return new Memento::ConcreteMementoForOutputVectorsAndOrbitalParameters(
+		m_pOrbitDeterminationAppClass->methodNameLineEdit->text(),
+		m_pOrbitDeterminationAppClass->r_2LineEdit->text(),
+		m_pOrbitDeterminationAppClass->v_2LineEdit->text(),
+		m_pOrbitDeterminationAppClass->inclinationLineEdit->text(),
+		m_pOrbitDeterminationAppClass->rightAscentionOfTheAscendingNodeLineEdit->text(),
+		m_pOrbitDeterminationAppClass->argumentOfPerigeeLineEdit->text(),
+		m_pOrbitDeterminationAppClass->eccentricityLineEdit->text(),
+		m_pOrbitDeterminationAppClass->largeSemiaxisLineEdit->text(),
+		m_pOrbitDeterminationAppClass->trueAnomalyLineEdit->text(),
+		m_pOrbitDeterminationAppClass->angularMomentumLineEdit->text());
+};
+
+void Results::OutputVectorsAndOrbitalParameters::Restore(
+	Memento::ConcreteMementoForOutputVectorsAndOrbitalParameters* memento)
+{
+	m_pOrbitDeterminationAppClass->methodNameLineEdit->setText(memento->GetMethodName());
+	m_pOrbitDeterminationAppClass->r_2LineEdit->setText(memento->Get_r_2());
+	m_pOrbitDeterminationAppClass->v_2LineEdit->setText(memento->Get_v_2());
+	m_pOrbitDeterminationAppClass->inclinationLineEdit->setText(memento->GetInclination());
+	m_pOrbitDeterminationAppClass->rightAscentionOfTheAscendingNodeLineEdit->setText(memento->GetRightAscentionOfTheAscendingNode());
+	m_pOrbitDeterminationAppClass->argumentOfPerigeeLineEdit->setText(memento->GetArgumentOfPerigee());
+	m_pOrbitDeterminationAppClass->eccentricityLineEdit->setText(memento->GetEccentricity());
+	m_pOrbitDeterminationAppClass->largeSemiaxisLineEdit->setText(memento->GetLargeSemiaxis());
+	m_pOrbitDeterminationAppClass->trueAnomalyLineEdit->setText(memento->GetTrueAnomaly());
+	m_pOrbitDeterminationAppClass->angularMomentumLineEdit->setText(memento->GetAngularMomentum());
 };
 
 void Results::OutputVectorsAndOrbitalParameters::ClearAll()

@@ -207,27 +207,27 @@ void SecondInputParameters::ManuallyObservationPoints::WriteSettings()
 
 	m_componentsSettings.setValue("/one observation point", m_bIsOneObservationPoint);
 
-	m_componentsSettings.setValue("/phi 1", m_aObservationPoints[0].phi);
+	m_componentsSettings.setValue("/phi 1", m_pOrbitDeterminationAppClass->phiLineEdit_1->text());
 	m_componentsSettings.setValue("/phi 1 read only", m_pOrbitDeterminationAppClass->phiLineEdit_1->isReadOnly());
-	m_componentsSettings.setValue("/lambda 1", m_aObservationPoints[0].lambda);
+	m_componentsSettings.setValue("/lambda 1", m_pOrbitDeterminationAppClass->lambdaLineEdit_1->text());
 	m_componentsSettings.setValue("/lambda 1 read only", m_pOrbitDeterminationAppClass->lambdaLineEdit_1->isReadOnly());
-	m_componentsSettings.setValue("/H 1", m_aObservationPoints[0].H);
+	m_componentsSettings.setValue("/H 1", m_pOrbitDeterminationAppClass->HlineEdit_1->text());
 	m_componentsSettings.setValue("/H 1 read only", m_pOrbitDeterminationAppClass->HlineEdit_1->isReadOnly());
 	m_componentsSettings.setValue("/first column style sheet", m_pOrbitDeterminationAppClass->firstColumnGroupBox->styleSheet());
 
-	m_componentsSettings.setValue("/phi 2", m_aObservationPoints[1].phi);
+	m_componentsSettings.setValue("/phi 2", m_pOrbitDeterminationAppClass->phiLineEdit_2->text());
 	m_componentsSettings.setValue("/phi 2 read only", m_pOrbitDeterminationAppClass->phiLineEdit_2->isReadOnly());
-	m_componentsSettings.setValue("/lambda 2", m_aObservationPoints[1].lambda);
+	m_componentsSettings.setValue("/lambda 2", m_pOrbitDeterminationAppClass->lambdaLineEdit_2->text());
 	m_componentsSettings.setValue("/lambda 2 read only", m_pOrbitDeterminationAppClass->lambdaLineEdit_2->isReadOnly());
-	m_componentsSettings.setValue("/H 2", m_aObservationPoints[1].H);
+	m_componentsSettings.setValue("/H 2", m_pOrbitDeterminationAppClass->HlineEdit_2->text());
 	m_componentsSettings.setValue("/H 2 read only", m_pOrbitDeterminationAppClass->HlineEdit_2->isReadOnly());
 	m_componentsSettings.setValue("/second column style sheet", m_pOrbitDeterminationAppClass->secondColumnGroupBox->styleSheet());
 
-	m_componentsSettings.setValue("/phi 3", m_aObservationPoints[2].phi);
+	m_componentsSettings.setValue("/phi 3", m_pOrbitDeterminationAppClass->phiLineEdit_3->text());
 	m_componentsSettings.setValue("/phi 3 read only", m_pOrbitDeterminationAppClass->phiLineEdit_3->isReadOnly());
-	m_componentsSettings.setValue("/lambda 3", m_aObservationPoints[2].lambda);
+	m_componentsSettings.setValue("/lambda 3", m_pOrbitDeterminationAppClass->lambdaLineEdit_3->text());
 	m_componentsSettings.setValue("/lambda 3 read only", m_pOrbitDeterminationAppClass->lambdaLineEdit_3->isReadOnly());
-	m_componentsSettings.setValue("/H 3", m_aObservationPoints[2].H);
+	m_componentsSettings.setValue("/H 3", m_pOrbitDeterminationAppClass->HlineEdit_3->text());
 	m_componentsSettings.setValue("/H 3 read only", m_pOrbitDeterminationAppClass->HlineEdit_3->isReadOnly());
 	m_componentsSettings.setValue("/third column style sheet", m_pOrbitDeterminationAppClass->thirdColumnGroupBox->styleSheet());
 
@@ -350,6 +350,38 @@ bool SecondInputParameters::ManuallyObservationPoints::GetObservationPointsFromL
 		m_pOrbitDeterminationAppClass->HlineEdit_3, &m_bOk[8]);
 	return std::all_of(m_bOk.begin(), m_bOk.end(), [](const bool& bOk) {
 		return bOk == true; });
+};
+
+Memento::ConcreteMementoForManuallyObservationPoints*
+SecondInputParameters::ManuallyObservationPoints::Save()
+{
+	return new Memento::ConcreteMementoForManuallyObservationPoints(
+		m_pOrbitDeterminationAppClass->oneObservationPointRadioButton->isChecked(),
+		m_pOrbitDeterminationAppClass->phiLineEdit_1->text(),
+		m_pOrbitDeterminationAppClass->lambdaLineEdit_1->text(),
+		m_pOrbitDeterminationAppClass->HlineEdit_1->text(),
+		m_pOrbitDeterminationAppClass->phiLineEdit_2->text(),
+		m_pOrbitDeterminationAppClass->lambdaLineEdit_2->text(),
+		m_pOrbitDeterminationAppClass->HlineEdit_2->text(),
+		m_pOrbitDeterminationAppClass->phiLineEdit_3->text(),
+		m_pOrbitDeterminationAppClass->lambdaLineEdit_3->text(),
+		m_pOrbitDeterminationAppClass->HlineEdit_3->text());
+};
+
+void SecondInputParameters::ManuallyObservationPoints::Restore(
+	Memento::ConcreteMementoForManuallyObservationPoints* memento)
+{
+	m_pOrbitDeterminationAppClass->phiLineEdit_1->setText(memento->GetPhi1());
+	m_pOrbitDeterminationAppClass->lambdaLineEdit_1->setText(memento->GetLambda1());
+	m_pOrbitDeterminationAppClass->HlineEdit_1->setText(memento->GetH1());
+
+	m_pOrbitDeterminationAppClass->phiLineEdit_2->setText(memento->GetPhi2());
+	m_pOrbitDeterminationAppClass->lambdaLineEdit_2->setText(memento->GetLambda2());
+	m_pOrbitDeterminationAppClass->HlineEdit_2->setText(memento->GetH2());
+
+	m_pOrbitDeterminationAppClass->phiLineEdit_3->setText(memento->GetPhi3());
+	m_pOrbitDeterminationAppClass->lambdaLineEdit_3->setText(memento->GetLambda3());
+	m_pOrbitDeterminationAppClass->HlineEdit_3->setText(memento->GetH3());
 };
 
 void SecondInputParameters::ManuallyObservationPoints::ClearAll()

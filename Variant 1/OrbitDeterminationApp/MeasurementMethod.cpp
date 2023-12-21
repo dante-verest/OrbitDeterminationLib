@@ -60,21 +60,21 @@ void FirstInputParameters::MeasurementMethod::WriteSettings()
 //	}
 //};
 
-QString&& FirstInputParameters::MeasurementMethod::GetCurrentItem()
+QString FirstInputParameters::MeasurementMethod::GetCurrentItem()
 {
 	int index = m_pOrbitDeterminationAppClass->methodComboBox->currentIndex();
 	QString methodName;
 	switch (index)
 	{
 	case 0:
-		methodName = m_methodNames.at(0);
+		methodName = std::move(m_methodNames.at(0));
 		break;
 	case 1:
-		methodName = m_methodNames.at(1);
+		methodName = std::move(m_methodNames.at(1));
 		break;
 	case 2:
-		methodName = m_methodNames.at(2);
+		methodName = std::move(m_methodNames.at(2));
 		break;
 	}
-	return std::move(methodName);
+	return /*std::move*/(methodName);
 };

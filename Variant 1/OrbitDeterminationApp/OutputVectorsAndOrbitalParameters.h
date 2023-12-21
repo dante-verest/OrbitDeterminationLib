@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "OrbitalParameters.h"
 #include "Components.h"
+#include "ConcreteMementoForOutputVectorsAndOrbitalParameters.h"
 
 namespace Results
 {
@@ -30,6 +31,10 @@ namespace Results
 
 		QString FullFormOfVector(const Eigen::Vector3<double>& vector);
 		void SetResultsToLineEdits();
+
+		Memento::ConcreteMementoForOutputVectorsAndOrbitalParameters* Save();
+		void Restore(Memento::ConcreteMementoForOutputVectorsAndOrbitalParameters* memento);
+
 		void ClearAll();
 	private:
 		void ReadSettings();

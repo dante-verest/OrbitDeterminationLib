@@ -25,6 +25,9 @@ ConcreteMediator1::ConcreteMediator1(
 		Menu(aOrbitDeterminationAppClass, this);
 	m_pStatusBar = new StatusBar::
 		StatusBar(aOrbitDeterminationAppClass, this);
+	m_pCaretaker = new Memento::
+		Caretaker(m_pManuallyAngularMeasurementsAndDate, 
+			m_pManuallyObservationPoints, m_pOutputVectorsAndOrbitalParameters);
 };
 
 ConcreteMediator1::~ConcreteMediator1()
@@ -39,6 +42,7 @@ ConcreteMediator1::~ConcreteMediator1()
 	delete m_pGlobalButtons;
 	delete m_pMenu;
 	delete m_pStatusBar;
+	delete m_pCaretaker;
 };
 
 void ConcreteMediator1::Notify(Components* sender, Commands event)
@@ -173,7 +177,7 @@ void ConcreteMediator1::Notify(Components* sender, Commands event)
 				QString::number(m_pGlobalButtons->GetCalculationTime().count() * 1e-6) + " секунд.");
 			break;
 		case Clear:
-			m_pAngularMeasurementsAndDate->ClearAll();
+			//m_pAngularMeasurementsAndDate->ClearAll();
 			//m_pObservationPoints->ClearAll();
 			m_pFileResults->ClearAll();
 			m_pManuallyAngularMeasurementsAndDate->ClearAll();

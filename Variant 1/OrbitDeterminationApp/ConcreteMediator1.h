@@ -11,6 +11,7 @@
 #include "OutputVectorsAndOrbitalParameters.h"
 #include "Menu.h"
 #include "StatusBar.h"
+#include "Caretaker.h"
 
 using namespace Eigen;
 using namespace Structures;
@@ -30,6 +31,7 @@ private:
 	Buttons::GlobalButtons* m_pGlobalButtons;
 	Menu::Menu* m_pMenu;
 	StatusBar::StatusBar* m_pStatusBar;
+	Memento::Caretaker* m_pCaretaker;
 
 	//using FPT = double;
 public:

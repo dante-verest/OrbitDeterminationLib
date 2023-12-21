@@ -21,41 +21,53 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
-    <Filter Include="Header Files\FirstInputParameters">
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{d6837054-4bac-4363-9337-6d5c5156d960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\FirstInputParameters">
       <UniqueIdentifier>{b4c1292c-7f15-4b36-b3a2-8b058bf50da5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FirstInputParameters">
-      <UniqueIdentifier>{342150e6-b8c7-4b3f-ae5d-bdba1d1f02fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\SecondInputParameters">
-      <UniqueIdentifier>{bb818fa0-e54a-4a83-b309-94460df300d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\SecondInputParameters">
-      <UniqueIdentifier>{76cf6faf-6521-4c35-b10a-8e4301dd1669}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GlobalButtons">
+    <Filter Include="Header Files\Components\GlobalButtons">
       <UniqueIdentifier>{e152fb5c-4560-459c-8244-b665993b362f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GlobalButtons">
-      <UniqueIdentifier>{4bc58312-75a6-45c2-9827-0235e5f558c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ResultParameters">
-      <UniqueIdentifier>{3fe943aa-88f3-4f87-8b31-f2e51a0c772c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ResultParameters">
-      <UniqueIdentifier>{1b556bd5-ba65-40ea-9da3-7f94e4d4027a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Menu">
+    <Filter Include="Header Files\Components\Menu">
       <UniqueIdentifier>{e55ab07e-5af4-4e1a-bc5c-27daf17c55f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Menu">
-      <UniqueIdentifier>{b9027f82-cff3-4f80-bc81-d684e1a9db1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\StatusBar">
+    <Filter Include="Header Files\Components\StatusBar">
       <UniqueIdentifier>{aec110fc-50bc-489a-8535-ff96ae8b5cdb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\StatusBar">
+    <Filter Include="Header Files\Components\ResultParameters">
+      <UniqueIdentifier>{1b556bd5-ba65-40ea-9da3-7f94e4d4027a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\SecondInputParameters">
+      <UniqueIdentifier>{bb818fa0-e54a-4a83-b309-94460df300d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{f6b91346-42e8-4b04-a576-41903d1c5979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Menu">
+      <UniqueIdentifier>{b9027f82-cff3-4f80-bc81-d684e1a9db1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\StatusBar">
       <UniqueIdentifier>{b4cb8de7-4506-41ad-abd0-587bd9b6d44e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\GlobalButtons">
+      <UniqueIdentifier>{4bc58312-75a6-45c2-9827-0235e5f558c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\FirstInputParameters">
+      <UniqueIdentifier>{342150e6-b8c7-4b3f-ae5d-bdba1d1f02fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\ResultParameters">
+      <UniqueIdentifier>{3fe943aa-88f3-4f87-8b31-f2e51a0c772c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\SecondInputParameters">
+      <UniqueIdentifier>{76cf6faf-6521-4c35-b10a-8e4301dd1669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Memento">
+      <UniqueIdentifier>{162757bc-1e69-468b-929f-b610e3f23e34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Memento">
+      <UniqueIdentifier>{6c3eb6c5-a55e-4a1d-a760-b1d32a81e4d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -83,57 +95,87 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MeasurementMethod.cpp">
-      <Filter>Source Files\FirstInputParameters</Filter>
+      <Filter>Source Files\Components\FirstInputParameters</Filter>
     </ClCompile>
     <ClCompile Include="ObservationPoints.cpp">
-      <Filter>Source Files\FirstInputParameters</Filter>
+      <Filter>Source Files\Components\FirstInputParameters</Filter>
     </ClCompile>
     <ClCompile Include="AngularMeasurementsAndDate.cpp">
-      <Filter>Source Files\FirstInputParameters</Filter>
+      <Filter>Source Files\Components\FirstInputParameters</Filter>
     </ClCompile>
     <ClCompile Include="FileResults.cpp">
-      <Filter>Source Files\FirstInputParameters</Filter>
+      <Filter>Source Files\Components\FirstInputParameters</Filter>
     </ClCompile>
     <ClCompile Include="ManuallyAngularMeasurementsAndDates.cpp">
-      <Filter>Source Files\SecondInputParameters</Filter>
+      <Filter>Source Files\Components\SecondInputParameters</Filter>
     </ClCompile>
     <ClCompile Include="ManuallyObservationPoints.cpp">
-      <Filter>Source Files\SecondInputParameters</Filter>
+      <Filter>Source Files\Components\SecondInputParameters</Filter>
     </ClCompile>
     <ClCompile Include="GlobalButtons.cpp">
-      <Filter>Source Files\GlobalButtons</Filter>
-    </ClCompile>
-    <ClCompile Include="Components.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mediator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ConcreteMediator1.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Components\GlobalButtons</Filter>
     </ClCompile>
     <ClCompile Include="OutputVectorsAndOrbitalParameters.cpp">
-      <Filter>Source Files\ResultParameters</Filter>
+      <Filter>Source Files\Components\ResultParameters</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\Menu</Filter>
+      <Filter>Source Files\Components\Menu</Filter>
     </ClCompile>
     <ClCompile Include="StatusBar.cpp">
-      <Filter>Source Files\StatusBar</Filter>
+      <Filter>Source Files\Components\StatusBar</Filter>
+    </ClCompile>
+    <ClCompile Include="Components.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcreteMediator1.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Mediator.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcreteMementoForManuallyAngularMeasurementsAndDates.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcreteMementoForManuallyObservationPoints.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcreteMementoForOutputVectorsAndOrbitalParameters.cpp">
+      <Filter>Source Files\Memento</Filter>
+    </ClCompile>
+    <ClCompile Include="Caretaker.cpp">
+      <Filter>Source Files\Memento</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Mediator.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Components.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="ConcreteMediator1.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Mediator.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteMementoForManuallyAngularMeasurementsAndDates.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteMementoForManuallyObservationPoints.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteMementoForOutputVectorsAndOrbitalParameters.h">
+      <Filter>Header Files\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="Caretaker.h">
+      <Filter>Header Files\Memento</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -148,34 +190,34 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ObservationPoints.h">
-      <Filter>Header Files\FirstInputParameters</Filter>
+      <Filter>Header Files\Components\FirstInputParameters</Filter>
     </QtMoc>
     <QtMoc Include="MeasurementMethod.h">
-      <Filter>Header Files\FirstInputParameters</Filter>
+      <Filter>Header Files\Components\FirstInputParameters</Filter>
     </QtMoc>
     <QtMoc Include="AngularMeasurementsAndDate.h">
-      <Filter>Header Files\FirstInputParameters</Filter>
+      <Filter>Header Files\Components\FirstInputParameters</Filter>
     </QtMoc>
     <QtMoc Include="FileResults.h">
-      <Filter>Header Files\FirstInputParameters</Filter>
+      <Filter>Header Files\Components\FirstInputParameters</Filter>
     </QtMoc>
     <QtMoc Include="ManuallyAngularMeasurementsAndDates.h">
-      <Filter>Header Files\SecondInputParameters</Filter>
+      <Filter>Header Files\Components\SecondInputParameters</Filter>
     </QtMoc>
     <QtMoc Include="GlobalButtons.h">
-      <Filter>Header Files\GlobalButtons</Filter>
+      <Filter>Header Files\Components\GlobalButtons</Filter>
     </QtMoc>
     <QtMoc Include="ManuallyObservationPoints.h">
-      <Filter>Header Files\SecondInputParameters</Filter>
+      <Filter>Header Files\Components\SecondInputParameters</Filter>
     </QtMoc>
     <QtMoc Include="OutputVectorsAndOrbitalParameters.h">
-      <Filter>Header Files\ResultParameters</Filter>
+      <Filter>Header Files\Components\ResultParameters</Filter>
     </QtMoc>
     <QtMoc Include="Menu.h">
-      <Filter>Header Files\Menu</Filter>
+      <Filter>Header Files\Components\Menu</Filter>
     </QtMoc>
     <QtMoc Include="StatusBar.h">
-      <Filter>Header Files\StatusBar</Filter>
+      <Filter>Header Files\Components\StatusBar</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

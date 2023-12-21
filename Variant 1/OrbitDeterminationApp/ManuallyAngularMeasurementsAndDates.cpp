@@ -18,7 +18,9 @@ SecondInputParameters::ManuallyAngularMeasurementsAndDate::ManuallyAngularMeasur
 	//completer->setCaseSensitivity(Qt::CaseSensitive);
 	//completer->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
 	//m_pOrbitDeterminationAppClass->alphaLineEdit_1->setCompleter(completer);
+	//m_pOrbitDeterminationAppClass->dateTimeEdit_1->setCom
 	//m_pOrbitDeterminationAppClass->alphaLineEdit_1->geometry();
+	//wordList << "4";
 
 	this->ReadSettings();
 
@@ -29,10 +31,32 @@ SecondInputParameters::ManuallyAngularMeasurementsAndDate::ManuallyAngularMeasur
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetAlpha1);
 	QObject::connect(
+		m_pCompleterToAlpha1,
+		QOverload<const QModelIndex&>::of(&QCompleter::highlighted),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::HighlightedNewAlpha1));
+	QObject::connect(
+		m_pCompleterToAlpha1,
+		QOverload<const QModelIndex&>::of(&QCompleter::activated),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::ActivatedNewAlpha1));
+
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_1,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDelta1);
+	QObject::connect(
+		m_pCompleterToDelta1,
+		QOverload<const QModelIndex&>::of(&QCompleter::highlighted),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::HighlightedNewDelta1));
+	QObject::connect(
+		m_pCompleterToDelta1,
+		QOverload<const QModelIndex&>::of(&QCompleter::activated),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::ActivatedNewDelta1));
+
 	QObject::connect(
 		m_pOrbitDeterminationAppClass->dateTimeEdit_1,
 		&QAbstractSpinBox::editingFinished,
@@ -45,10 +69,32 @@ SecondInputParameters::ManuallyAngularMeasurementsAndDate::ManuallyAngularMeasur
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetAlpha2);
 	QObject::connect(
+		m_pCompleterToAlpha2,
+		QOverload<const QModelIndex&>::of(&QCompleter::highlighted),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::HighlightedNewAlpha2));
+	QObject::connect(
+		m_pCompleterToAlpha2,
+		QOverload<const QModelIndex&>::of(&QCompleter::activated),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::ActivatedNewAlpha2));
+
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_2,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDelta2);
+	QObject::connect(
+		m_pCompleterToDelta2,
+		QOverload<const QModelIndex&>::of(&QCompleter::highlighted),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::HighlightedNewDelta2));
+	QObject::connect(
+		m_pCompleterToDelta2,
+		QOverload<const QModelIndex&>::of(&QCompleter::activated),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::ActivatedNewDelta2));
+
 	QObject::connect(
 		m_pOrbitDeterminationAppClass->dateTimeEdit_2,
 		&QAbstractSpinBox::editingFinished,
@@ -61,17 +107,37 @@ SecondInputParameters::ManuallyAngularMeasurementsAndDate::ManuallyAngularMeasur
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetAlpha3);
 	QObject::connect(
+		m_pCompleterToAlpha3,
+		QOverload<const QModelIndex&>::of(&QCompleter::highlighted),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::HighlightedNewAlpha3));
+	QObject::connect(
+		m_pCompleterToAlpha3,
+		QOverload<const QModelIndex&>::of(&QCompleter::activated),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::ActivatedNewAlpha3));
+
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_3,
 		&QLineEdit::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDelta3);
 	QObject::connect(
+		m_pCompleterToDelta3,
+		QOverload<const QModelIndex&>::of(&QCompleter::highlighted),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::HighlightedNewDelta3));
+	QObject::connect(
+		m_pCompleterToDelta3,
+		QOverload<const QModelIndex&>::of(&QCompleter::activated),
+		this,
+		QOverload<const QModelIndex&>::of(&ManuallyAngularMeasurementsAndDate::ActivatedNewDelta3));
+
+	QObject::connect(
 		m_pOrbitDeterminationAppClass->dateTimeEdit_3,
 		&QAbstractSpinBox::editingFinished,
 		this,
 		&ManuallyAngularMeasurementsAndDate::SetDate3);
-
-	//m_pOrbitDeterminationAppClass->spinBox->setSpecialValueText("1");
 };
 
 SecondInputParameters::ManuallyAngularMeasurementsAndDate::~ManuallyAngularMeasurementsAndDate()
@@ -159,46 +225,46 @@ void SecondInputParameters::ManuallyAngularMeasurementsAndDate::WriteSettings()
 {
 	m_componentsSettings.beginGroup("/Settings for manually angular measurements and dates");
 
-	m_componentsSettings.setValue("/alpha 1", m_aAngularMeasurements[0].alpha);
+	m_componentsSettings.setValue("/alpha 1", m_pOrbitDeterminationAppClass->alphaLineEdit_1->text());
 	m_componentsSettings.setValue("/alpha 1 read only", m_pOrbitDeterminationAppClass->alphaLineEdit_1->isReadOnly());
-	m_componentsSettings.setValue("/delta 1", m_aAngularMeasurements[0].delta);
+	m_componentsSettings.setValue("/delta 1", m_pOrbitDeterminationAppClass->deltaLineEdit_1->text());
 	m_componentsSettings.setValue("/delta 1 read only", m_pOrbitDeterminationAppClass->deltaLineEdit_1->isReadOnly());
 
-	m_componentsSettings.setValue("/year 1", m_aDates[0].year);
-	m_componentsSettings.setValue("/month 1", m_aDates[0].month);
-	m_componentsSettings.setValue("/day 1", m_aDates[0].day);
-	m_componentsSettings.setValue("/hour 1", m_aDates[0].hour);
-	m_componentsSettings.setValue("/minute 1", m_aDates[0].min);
-	m_componentsSettings.setValue("/second 1", static_cast<int>(m_aDates[0].sec));
-	m_componentsSettings.setValue("/millisecond 1", 1000 * (m_aDates[0].sec - static_cast<int>(m_aDates[0].sec)));
+	m_componentsSettings.setValue("/year 1", m_pOrbitDeterminationAppClass->dateTimeEdit_1->date().year());
+	m_componentsSettings.setValue("/month 1", m_pOrbitDeterminationAppClass->dateTimeEdit_1->date().month());
+	m_componentsSettings.setValue("/day 1", m_pOrbitDeterminationAppClass->dateTimeEdit_1->date().day());
+	m_componentsSettings.setValue("/hour 1", m_pOrbitDeterminationAppClass->dateTimeEdit_1->time().hour());
+	m_componentsSettings.setValue("/minute 1", m_pOrbitDeterminationAppClass->dateTimeEdit_1->time().minute());
+	m_componentsSettings.setValue("/second 1", m_pOrbitDeterminationAppClass->dateTimeEdit_1->time().second());
+	m_componentsSettings.setValue("/millisecond 1", m_pOrbitDeterminationAppClass->dateTimeEdit_1->time().msec());
 	m_componentsSettings.setValue("/date 1 read only", m_pOrbitDeterminationAppClass->dateTimeEdit_1->isReadOnly());
 
-	m_componentsSettings.setValue("/alpha 2", m_aAngularMeasurements[0].alpha);
+	m_componentsSettings.setValue("/alpha 2", m_pOrbitDeterminationAppClass->alphaLineEdit_2->text());
 	m_componentsSettings.setValue("/alpha 2 read only", m_pOrbitDeterminationAppClass->alphaLineEdit_2->isReadOnly());
-	m_componentsSettings.setValue("/delta 2", m_aAngularMeasurements[0].delta);
+	m_componentsSettings.setValue("/delta 2", m_pOrbitDeterminationAppClass->deltaLineEdit_2->text());
 	m_componentsSettings.setValue("/delta 2 read only", m_pOrbitDeterminationAppClass->deltaLineEdit_2->isReadOnly());
 
-	m_componentsSettings.setValue("/year 2", m_aDates[1].year);
-	m_componentsSettings.setValue("/month 2", m_aDates[1].month);
-	m_componentsSettings.setValue("/day 2", m_aDates[1].day);
-	m_componentsSettings.setValue("/hour 2", m_aDates[1].hour);
-	m_componentsSettings.setValue("/minute 2", m_aDates[1].min);
-	m_componentsSettings.setValue("/second 2", static_cast<int>(m_aDates[1].sec));
-	m_componentsSettings.setValue("/millisecond 2", 1000 * (m_aDates[1].sec - static_cast<int>(m_aDates[1].sec)));
+	m_componentsSettings.setValue("/year 2", m_pOrbitDeterminationAppClass->dateTimeEdit_2->date().year());
+	m_componentsSettings.setValue("/month 2", m_pOrbitDeterminationAppClass->dateTimeEdit_2->date().month());
+	m_componentsSettings.setValue("/day 2", m_pOrbitDeterminationAppClass->dateTimeEdit_2->date().day());
+	m_componentsSettings.setValue("/hour 2", m_pOrbitDeterminationAppClass->dateTimeEdit_2->time().hour());
+	m_componentsSettings.setValue("/minute 2", m_pOrbitDeterminationAppClass->dateTimeEdit_2->time().minute());
+	m_componentsSettings.setValue("/second 2", m_pOrbitDeterminationAppClass->dateTimeEdit_2->time().second());
+	m_componentsSettings.setValue("/millisecond 2", m_pOrbitDeterminationAppClass->dateTimeEdit_2->time().msec());
 	m_componentsSettings.setValue("/date 2 read only", m_pOrbitDeterminationAppClass->dateTimeEdit_2->isReadOnly());
 
-	m_componentsSettings.setValue("/alpha 3", m_aAngularMeasurements[0].alpha);
+	m_componentsSettings.setValue("/alpha 3", m_pOrbitDeterminationAppClass->alphaLineEdit_3->text());
 	m_componentsSettings.setValue("/alpha 3 read only", m_pOrbitDeterminationAppClass->alphaLineEdit_3->isReadOnly());
-	m_componentsSettings.setValue("/delta 3", m_aAngularMeasurements[0].delta);
+	m_componentsSettings.setValue("/delta 3", m_pOrbitDeterminationAppClass->deltaLineEdit_3->text());
 	m_componentsSettings.setValue("/delta 3 read only", m_pOrbitDeterminationAppClass->deltaLineEdit_3->isReadOnly());
 
-	m_componentsSettings.setValue("/year 3", m_aDates[2].year);
-	m_componentsSettings.setValue("/month 3", m_aDates[2].month);
-	m_componentsSettings.setValue("/day 3", m_aDates[2].day);
-	m_componentsSettings.setValue("/hour 3", m_aDates[2].hour);
-	m_componentsSettings.setValue("/minute 3", m_aDates[2].min);
-	m_componentsSettings.setValue("/second 3", static_cast<int>(m_aDates[2].sec));
-	m_componentsSettings.setValue("/millisecond 3", 1000 * (m_aDates[2].sec - static_cast<int>(m_aDates[2].sec)));
+	m_componentsSettings.setValue("/year 3", m_pOrbitDeterminationAppClass->dateTimeEdit_3->date().year());
+	m_componentsSettings.setValue("/month 3", m_pOrbitDeterminationAppClass->dateTimeEdit_3->date().month());
+	m_componentsSettings.setValue("/day 3", m_pOrbitDeterminationAppClass->dateTimeEdit_3->date().day());
+	m_componentsSettings.setValue("/hour 3", m_pOrbitDeterminationAppClass->dateTimeEdit_3->time().hour());
+	m_componentsSettings.setValue("/minute 3", m_pOrbitDeterminationAppClass->dateTimeEdit_3->time().minute());
+	m_componentsSettings.setValue("/second 3", m_pOrbitDeterminationAppClass->dateTimeEdit_3->time().second());
+	m_componentsSettings.setValue("/millisecond 3", m_pOrbitDeterminationAppClass->dateTimeEdit_3->time().msec());
 	m_componentsSettings.setValue("/date 3 read only", m_pOrbitDeterminationAppClass->dateTimeEdit_3->isReadOnly());
 
 	m_componentsSettings.endGroup();
@@ -301,6 +367,82 @@ void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetReadOnlyAllMe
 //	//return tr("%1 x %1").arg(value);
 //};
 
+Memento::ConcreteMementoForManuallyAngularMeasurementsAndDates*
+SecondInputParameters::ManuallyAngularMeasurementsAndDate::Save()
+{
+	return new Memento::ConcreteMementoForManuallyAngularMeasurementsAndDates(
+		m_pOrbitDeterminationAppClass->alphaLineEdit_1->text(),
+		m_pOrbitDeterminationAppClass->deltaLineEdit_1->text(),
+		{ m_pOrbitDeterminationAppClass->dateTimeEdit_1->date().year(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_1->date().month(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_1->date().day(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_1->time().hour(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_1->time().minute(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_1->time().second() +
+		m_pOrbitDeterminationAppClass->dateTimeEdit_1->time().msec() / 1000.0 },
+		m_pOrbitDeterminationAppClass->alphaLineEdit_2->text(),
+		m_pOrbitDeterminationAppClass->deltaLineEdit_2->text(),
+		{ m_pOrbitDeterminationAppClass->dateTimeEdit_2->date().year(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_2->date().month(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_2->date().day(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_2->time().hour(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_2->time().minute(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_2->time().second() +
+		m_pOrbitDeterminationAppClass->dateTimeEdit_2->time().msec() / 1000.0 },
+		m_pOrbitDeterminationAppClass->alphaLineEdit_3->text(),
+		m_pOrbitDeterminationAppClass->deltaLineEdit_3->text(),
+		{ m_pOrbitDeterminationAppClass->dateTimeEdit_3->date().year(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_3->date().month(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_3->date().day(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_3->time().hour(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_3->time().minute(),
+		m_pOrbitDeterminationAppClass->dateTimeEdit_3->time().second() +
+		m_pOrbitDeterminationAppClass->dateTimeEdit_3->time().msec() / 1000.0 });
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::Restore(
+	Memento::ConcreteMementoForManuallyAngularMeasurementsAndDates* memento)
+{
+	m_pOrbitDeterminationAppClass->alphaLineEdit_1->setText(memento->GetAlpha1());
+	m_pOrbitDeterminationAppClass->deltaLineEdit_1->setText(memento->GetDelta1());
+	m_pOrbitDeterminationAppClass->dateTimeEdit_1->setDateTime(QDateTime(
+		QDate(memento->GetDateTime1().year,
+			memento->GetDateTime1().month,
+			memento->GetDateTime1().day),
+		QTime(memento->GetDateTime1().hour,
+			memento->GetDateTime1().min,
+			static_cast<int>(memento->GetDateTime1().sec),
+			1000 * (memento->GetDateTime1().sec - static_cast<int>(memento->GetDateTime1().sec)))));
+
+	m_pOrbitDeterminationAppClass->alphaLineEdit_2->setText(memento->GetAlpha2());
+	m_pOrbitDeterminationAppClass->deltaLineEdit_2->setText(memento->GetDelta2());
+	m_pOrbitDeterminationAppClass->dateTimeEdit_2->setDateTime(QDateTime(
+		QDate(memento->GetDateTime2().year,
+			memento->GetDateTime2().month,
+			memento->GetDateTime2().day),
+		QTime(memento->GetDateTime2().hour,
+			memento->GetDateTime2().min,
+			static_cast<int>(memento->GetDateTime2().sec),
+			1000 * (memento->GetDateTime2().sec - static_cast<int>(memento->GetDateTime2().sec)))));
+
+	m_pOrbitDeterminationAppClass->alphaLineEdit_3->setText(memento->GetAlpha3());
+	m_pOrbitDeterminationAppClass->deltaLineEdit_3->setText(memento->GetDelta3());
+	m_pOrbitDeterminationAppClass->dateTimeEdit_3->setDateTime(QDateTime(
+		QDate(memento->GetDateTime3().year,
+			memento->GetDateTime3().month,
+			memento->GetDateTime3().day),
+		QTime(memento->GetDateTime3().hour,
+			memento->GetDateTime3().min,
+			static_cast<int>(memento->GetDateTime3().sec),
+			1000 * (memento->GetDateTime3().sec - static_cast<int>(memento->GetDateTime3().sec)))));
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetVectorOfAngularMeasurementsAndDatesMementosToCompleters()
+{
+	QStringList stringList;
+
+};
+
 void SecondInputParameters::ManuallyAngularMeasurementsAndDate::ClearAll()
 {
 	m_pOrbitDeterminationAppClass->alphaLineEdit_1->clear();
@@ -323,11 +465,31 @@ void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetAlpha1()
 		m_pOrbitDeterminationAppClass->alphaLineEdit_1, &m_bOk[0]);
 };
 
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::HighlightedNewAlpha1(const QModelIndex& index)
+{
+	
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::ActivatedNewAlpha1(const QModelIndex& index)
+{
+
+};
+
 void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetDelta1()
 {
 	//this->m_pMediator->Notify(this, Commands::EnteringDelta1);
 	m_aAngularMeasurements[0].delta = this->GetAngularMeasurement(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_1, &m_bOk[1]);
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::HighlightedNewDelta1(const QModelIndex& index)
+{
+
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::ActivatedNewDelta1(const QModelIndex& index)
+{
+
 };
 
 void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetDate1()
@@ -344,11 +506,31 @@ void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetAlpha2()
 		m_pOrbitDeterminationAppClass->alphaLineEdit_2, &m_bOk[2]);
 };
 
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::HighlightedNewAlpha2(const QModelIndex& index)
+{
+
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::ActivatedNewAlpha2(const QModelIndex& index)
+{
+
+};
+
 void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetDelta2()
 {
 	//this->m_pMediator->Notify(this, Commands::EnteringDelta2);
 	m_aAngularMeasurements[1].delta = this->GetAngularMeasurement(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_2, &m_bOk[3]);
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::HighlightedNewDelta2(const QModelIndex& index)
+{
+
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::ActivatedNewDelta2(const QModelIndex& index)
+{
+
 };
 
 void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetDate2()
@@ -365,11 +547,31 @@ void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetAlpha3()
 		m_pOrbitDeterminationAppClass->alphaLineEdit_3, &m_bOk[4]);
 };
 
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::HighlightedNewAlpha3(const QModelIndex& index)
+{
+
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::ActivatedNewAlpha3(const QModelIndex& index)
+{
+
+};
+
 void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetDelta3()
 {
 	//this->m_pMediator->Notify(this, Commands::EnteringDelta3);
 	m_aAngularMeasurements[2].delta = this->GetAngularMeasurement(
 		m_pOrbitDeterminationAppClass->deltaLineEdit_3, &m_bOk[5]);
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::HighlightedNewDelta3(const QModelIndex& index)
+{
+
+};
+
+void SecondInputParameters::ManuallyAngularMeasurementsAndDate::ActivatedNewDelta3(const QModelIndex& index)
+{
+
 };
 
 void SecondInputParameters::ManuallyAngularMeasurementsAndDate::SetDate3()
